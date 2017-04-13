@@ -51,6 +51,10 @@
 
 ?>
 <hr>
+
+<form method="POST" action"voltar.php">
+<a href="../logout">sair</a>
+</form>
 </center>
 </body>
 </html>
