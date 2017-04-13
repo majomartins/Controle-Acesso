@@ -2,25 +2,25 @@
 <html>
 	<head>
 	<title>Exemplos para a loja virtual</title>
+	<link href="stylesheet.css" type="text/css" rel="stylesheet">
 	</head>
+	
 	<body>
-		<center>
-		<br><br>
 		<?php
 		if(isset($erro))
 			echo "Erro";
 		?>
-		<br><br>
-			<form method="POST">
-				E-mail:
-				<input type="text" name="email">
-				<br>
-				Senha
-				<input type="password" name="senha">
-				<br>
-				<br>
-				<input type="submit" value="Entrar" name="btn_entrar">
+		<div class="login">
+			<div class="login-triangle"></div>
+  
+			<h2 class="login-header">HIPPO</h2>
+		
+			<form class="login-container" method="POST">
+			
+				<p><input type="text" placeholder="Email" name="email"></p>
+				<p><input type="password" placeholder="Password" name="senha"></p>
+				<p><input type="submit" name="btn_entrar" value="Entrar"></p>
 			</form>
-		</center>
+		</div>
 	</body>
 </html>

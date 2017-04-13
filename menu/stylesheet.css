@@ -1,0 +1,9 @@
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+body {
+  background: #456;
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  text-decoration: none;
+}

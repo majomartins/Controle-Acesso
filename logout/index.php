@@ -3,7 +3,7 @@
 include "../auth/controledeacesso.php";
 
 session_destroy();
-header("location:../indexinicio.php");
+header("location:../index.php");
 
 
 ?>
