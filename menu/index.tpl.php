@@ -14,7 +14,7 @@
 		<HR>
 		<tr>
 			<td>Usuário</td>
-			<td><a href="escolha.php?escolha=produto">Produto</a></td>
+			<td><a href="produto.php?escolha=produto">Produto</a></td>
 			<td>Categoria</td>
 			<td><a href="../logout">sair</a></td>
 		</tr>
