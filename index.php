@@ -1,5 +1,6 @@
 <html>
 	<head>
-		<meta http-equiv="refresh" content="0; url=auth" />
+		<meta 	http-equiv="refresh" 
+				content="0; url=auth" />
 	</head>
 </html>

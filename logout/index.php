@@ -1,9 +1,6 @@
 <?php
-
-include "../auth/controledeacesso.php";
+include('../auth/controle_de_acesso.php');
 
 session_destroy();
-header("location:../index.php");
-
-
+header("Location: /Controle-Acesso");
 ?>
