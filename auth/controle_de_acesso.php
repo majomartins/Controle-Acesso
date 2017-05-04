@@ -7,7 +7,7 @@ if(	!isset($_SESSION['idUsuario']) ||
 	!isset($_SESSION['nomeUsuario'])){
 	
 	session_destroy();
-	header("Location: /loja");
+	header("Location: /Controle-Acesso");
 	exit();	
 }
 ?>

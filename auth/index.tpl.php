@@ -17,8 +17,8 @@
     <div class="grid">
 
       <form  method="POST" class="form login">
-
-        <div class="form__field">
+		
+		<div class="form__field">
           <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Usuário</span></label>
           <input id="login__username" type="text" name="email" class="form__input" placeholder="Username" required>
         </div>
@@ -27,10 +27,19 @@
           <label for="login__password"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use></svg><span class="hidden">Senha</span></label>
           <input id="login__password" type="password" name="senha" class="form__input" placeholder="Password" required>
         </div>
-
+		
+		<?php
+		
+		if(isset($erro)){
+			echo "<center>".$erro."</center>";
+		}
+		?>
+		
         <div class="form__field">
           <input type="submit" value="Conectar" name="btn_entrar">
         </div>
+		
+		
 
       </form>
 

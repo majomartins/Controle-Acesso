@@ -18,22 +18,44 @@ if(isset($msg)){
 <body>
 <table width="100%" border="1">
 	<tr>
-		<td bgcolor="gray">ID Usu&aacute;rio</td>
-		<td bgcolor="gray">Login</td>
-		<td bgcolor="gray">Nome</td>
-		<td bgcolor="gray">Perfil</td>
-		<td bgcolor="gray">Ativo</td>
+		<td color="ff4040">ID Usu&aacute;rio</td>
+		<td>Login</td>
+		<td>Nome</td>
+		<td>Perfil</td>
+		<td>Ativo</td>
 		<td colspan="2" align="center">
-			<a href="?acao=incluir">
-			<font color="green">
+			<?php
+			
+			if($_SESSION['tipoPerfil'] == "A"){
+			
+			echo '<a href="?acao=incluir">';
+			
+			echo"<font color='green'>
 			+ Novo Usu&aacute;rio
 			</font>
-			</a>
+			</a>";
+			}else{
+				echo "Novo Usuário";
+			}
+			?>
 		</td>
 	</tr>
 	<?php
-	foreach($usuarios as $usuario){
-		echo "	<tr>
+	if($_SESSION['tipoPerfil'] == "C"){
+		foreach($usuarios as $usuario){
+			echo "	<tr>
+					<td>{$usuario['idUsuario']}</td>
+					<td>{$usuario['loginUsuario']}</td>
+					<td>{$usuario['nomeUsuario']}</td>
+					<td>{$usuario['tipoPerfil']}</td>
+					<td>{$usuario['usuarioAtivo']}</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					";
+		} 		
+	}else{
+		foreach($usuarios as $usuario){
+			echo "	<tr>
 					<td>{$usuario['idUsuario']}</td>
 					<td>{$usuario['loginUsuario']}</td>
 					<td>{$usuario['nomeUsuario']}</td>
@@ -48,7 +70,11 @@ if(isset($msg)){
 						Excluir
 						</a></td>
 				</tr>";		
+		}
 	}
+		
+	
+	
 	?>
 </table>
 </body>
