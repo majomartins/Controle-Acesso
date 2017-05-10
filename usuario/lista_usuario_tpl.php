@@ -51,7 +51,7 @@ if(isset($msg)){
 					<td>{$usuario['usuarioAtivo']}</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
-					";
+					</tr>";
 		} 		
 	}else{
 		foreach($usuarios as $usuario){

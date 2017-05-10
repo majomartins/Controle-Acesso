@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="br">
 
   <head>
-    <meta charset="utf-8">
+    <meta charset="ISO-8601">
 
     <title>Login</title>
 
