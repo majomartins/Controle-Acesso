@@ -14,6 +14,7 @@ if(isset($msg)){
 ?>
 <head>
 <link href="stylesheet.css">
+<meta charset="iso-8859-1">
 </head>
 <body>
 <table width="100%" border="1">
