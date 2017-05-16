@@ -48,7 +48,7 @@ if(isset($msg)){
 	qtdMinEstoque:
 	<input type="text" name="qtdMinEstoque" value="<?php echo $array_produto['qtdMinEstoque']; ?>"><br><br>
 	
-	Imagem:<input type="image" name="imagem" value="<?php echo $array_produto['imagem']; ?>"><br><br>
+	Imagem:<input type="image" name="imagem" value="<?php echo ?>"
 	
 	<input type="submit" value="Gravar" name="btnGravarProduto">	
 

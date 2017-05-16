@@ -4,12 +4,8 @@ include "../menu/index.head.tpl.php";
 include "../menu/index.body.tpl.php";
 
 ?>
-<head>
-	<title>Lista produto</title>
-	<meta charset="iso-8859-1">
-</head>	
 <body>
-	<table border="1">
+	<table width="100%">
 		<tr>
 			<td>IdProduto</td>
 			<td>NomeProduto</td>
@@ -21,7 +17,7 @@ include "../menu/index.body.tpl.php";
 			<td>IdUsuario</td>
 			<td>Estoque</td>
 			<td>Imagem</td>
-			<td colspan="2" align="center">
+			<td>
 				<?php
 					if($_SESSION['tipoPerfil'] == "A"){
 				
@@ -58,7 +54,6 @@ include "../menu/index.body.tpl.php";
 						</tr>";
 			} 		
 		}else{
-			header("Content-type: text/html; charset=iso-8859-1");
 			foreach($produtos as $produto){
 								
 				echo "	<tr>
@@ -71,7 +66,7 @@ include "../menu/index.body.tpl.php";
 							<td>{$produto['ativoProduto']}</td>
 							<td>{$produto['idUsuario']}</td>
 							<td>{$produto['qtdMinEstoque']}</td>
-							<td><img width='200' src='data:image/jpeg;base64,".base64_encode($produto['imagem'])."' /></td>	
+							<td><img width = '100px' src='data:image/jpeg;base64,".base64_encode($produto['imagem'])."' /></td>	
 							<td><a href='?acao=editar&id={$produto['idProduto']}'>Editar</a></td>
 							<td><a href='?acao=excluir&id={$produto['idProduto']}'>Excluir</a></td>
 						</tr>";		

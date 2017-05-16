@@ -17,14 +17,14 @@ if(isset($msg)){
 <meta charset="iso-8859-1">
 </head>
 <body>
-<table width="100%" border="1">
-	<tr>
-		<td color="ff4040">ID Usu&aacute;rio</td>
+<table>
+	<tr	>
+		<td>ID Usu&aacute;rio</td>
 		<td>Login</td>
 		<td>Nome</td>
 		<td>Perfil</td>
 		<td>Ativo</td>
-		<td colspan="2" align="center">
+		<td>
 			<?php
 			
 			if($_SESSION['tipoPerfil'] == "A"){

@@ -89,19 +89,17 @@ if(isset($_REQUEST['acao'])){
 				//trataImagem
 				$imagem = $_FILES['imagem'];
 				
-				var_dump($_FILES['imagem']);
-				
 				
 				
 				if(odbc_exec($db, "	UPDATE 
 										Produto
 									SET
 										nomeProduto = '$nome',
-										descProduto = '$descProduto'),
+										descProduto = '$descProduto',
 										precProduto = '$precProduto',
 										descontoPromocao = '$descontoPromocao',
 										idCategoria = '$idCategoria',
-										ativoProduto = '$ativo'
+										ativoProduto = '$ativo',
 										qtdMinEstoque = '$qtdMinEstoque',
 										imagem = $imagem
 									WHERE

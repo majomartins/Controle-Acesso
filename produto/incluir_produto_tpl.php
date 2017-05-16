@@ -8,7 +8,7 @@ include('../menu/index.body.tpl.php');
 	<input type="text" name="nome"><br><br>
 	
 	Descricao Produto: 
-	<input type="text" name="descProduto""><br><br>
+	<input type="text" name="descProduto"><br><br>
 	
 	Preço Produto: 
 	<input type="text" name="precProduto" ><br><br>
