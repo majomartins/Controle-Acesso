@@ -8,12 +8,18 @@ if(isset($_REQUEST['acao'])){
 	$acao = $_REQUEST['acao'];
 	
 	switch($acao){
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////case INCLUIR
+	
+		
 		case 'incluir':
 			include('incluir_produto_tpl.php');
 			break;
 		
-		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////case EXCLUIR
+		
+		
+		
+		
+		
+		
 		case 'excluir':
 			if(is_numeric($_GET['id'])){
 				if($q = odbc_exec($db, "	DELETE FROM 
@@ -54,7 +60,10 @@ if(isset($_REQUEST['acao'])){
 					
 			break;
 		
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////case EDITAR
+
+		
+		
+		
 		
 		case 'editar':
 		
@@ -87,7 +96,10 @@ if(isset($_REQUEST['acao'])){
 				$qtdMinEstoque = preg_replace("/[^0-9]/","",$_POST['qtdMinEstoque']);
 				
 				//trataImagem
-				$imagem = $_FILES['imagem'];
+				if($_FILES['imagem']['type'] == "image/jpg"){
+					$imagem = $_FILES['imagem']['tmp_name'];
+				}	
+				
 				
 				
 				
@@ -138,7 +150,9 @@ if(isset($_REQUEST['acao'])){
 	
 }else{
 
-	//////////////////////////////////////////////////////////////////////////////////////////insere novo produto
+	
+	
+	
 	
 	if(isset($_POST['btnNovoProduto'])){
 				
@@ -167,8 +181,10 @@ if(isset($_REQUEST['acao'])){
 				$qtdMinEstoque = preg_replace("/[^0-9]/","",$_POST['qtdMinEstoque']);
 				
 				//trataImagem
-				$imagem = $_FILES['imagem'];
-				var_dump($_FILES);
+				if($_FILES['imagem']['type'] == "image/jpeg"){
+					$imagem = $_FILES['imagem']['tmp_name'];
+				}
+				
 		
 		if(odbc_exec($db, "	INSERT INTO
 								Produto
@@ -185,9 +201,9 @@ if(isset($_REQUEST['acao'])){
 								'$descProduto',
 								'$precProduto',
 								'$descontoPromocao',
-								'$idCategoria'
-								'$ativo'
-								'$qtdMinEstoque'
+								'$idCategoria',
+								'$ativo',
+								'$qtdMinEstoque',
 								'$imagem')")){
 			$msg = "Produto gravado com sucesso";					
 		}else{

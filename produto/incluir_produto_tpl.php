@@ -22,8 +22,7 @@ include('../menu/index.body.tpl.php');
 	Ativo:
 	<input type="checkbox" name="ativo">
 				
-	<input type="hidden" name="id" value="<?php echo $array_produto['idProduto']; ?>">
-	<input type="hidden" name="acao" value="editar">
+	<input type="hidden" name="acao" value="incluir">
 	
 	<br><br>
 		
@@ -32,7 +31,7 @@ include('../menu/index.body.tpl.php');
 	
 	Imagem:<input type="file" name="imagem"><br><br>
 	
-	<input type="submit" value="Gravar" name="btnGravarProduto">	
+	<input type="submit" value="Gravar" name="btnNovoProduto">	
 
 	</form>
 <?php
