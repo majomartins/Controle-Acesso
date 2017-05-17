@@ -1,23 +1,17 @@
 <?php
 ini_set ('odbc.defaultlrl', 9000000);
-include('../db/index.php');
-include('../auth/controle_de_acesso.php');
+include "../auth/controle_de_acesso.php";
+include"../db/index.php";
 
 if(isset($_REQUEST['acao'])){
 	
 	$acao = $_REQUEST['acao'];
 	
 	switch($acao){
-	
-		
 		case 'incluir':
 			include('incluir_produto_tpl.php');
 			break;
-		
-		
-		
-		
-		
+			
 		
 		
 		case 'excluir':
@@ -32,7 +26,7 @@ if(isset($_REQUEST['acao'])){
 						$erro = "Produto n&atilde;o existe";
 					}
 				}else{
-					$erro = "Erro ao excluir o Produto";
+					$erro = "Erro ao excluir o Poduto";
 				}
 			}else{
 				$erro = "ID inv&aacute;lido";
@@ -56,11 +50,10 @@ if(isset($_REQUEST['acao'])){
 				$produtos[$i] = $r;
 				$i++;
 			}
+			
 			include('lista_produto_tpl.php');	
 					
 			break;
-		
-
 		
 		
 		
@@ -95,35 +88,36 @@ if(isset($_REQUEST['acao'])){
 				//trata quantMinEstoque
 				$qtdMinEstoque = preg_replace("/[^0-9]/","",$_POST['qtdMinEstoque']);
 				
-				//trataImagem
-				if($_FILES['imagem']['type'] == "image/jpg"){
-					$imagem = $_FILES['imagem']['tmp_name'];
-				}	
+				
+				//trata imagem
+				$image = $_FILES['imagejpg']['tmp_name'];
+				$imagem = fopen($image, "r");
+				$conteudo = fread($imagem, filesize($image));
 				
 				
 				
-				
-				if(odbc_exec($db, "	UPDATE 
-										Produto
-									SET
-										nomeProduto = '$nome',
-										descProduto = '$descProduto',
-										precProduto = '$precProduto',
-										descontoPromocao = '$descontoPromocao',
-										idCategoria = '$idCategoria',
-										ativoProduto = '$ativo',
-										qtdMinEstoque = '$qtdMinEstoque',
-										imagem = $imagem
-									WHERE
-										idProduto = $idProduto")){
-					$msg = "Produto gravado com sucesso";					
-				}else{
-					$erro = "Erro ao gravar o Produto";
-				}
+				$sql = "UPDATE 
+							Produto
+						SET
+							nomeProduto = ?,
+							descProduto = ?,
+							precProduto = ?,
+							descontoPromocao = ?,
+							idCategoria = ?,
+							ativoProduto = ?,
+							qtdMinEstoque = ?,
+							imagem = ?
+						WHERE
+							idProduto = ?";
+					
+				$prepare = odbc_prepare($db,$sql);
+				$parametro = array($nome,$descProduto,$precProduto,$descontoPromocao,$idCategoria,$ativo,$qtdMinEstoque,$conteudo,$idProduto);
+				$res = odbc_execute($prepare,$parametro);
+					
 			}
 		
-			$query_produto
-				= odbc_exec($db, "SELECT 
+			$query_usuario
+				= odbc_exec($db, 'SELECT 
 									idProduto,
 									nomeProduto,
 									descProduto,
@@ -131,14 +125,15 @@ if(isset($_REQUEST['acao'])){
 									descontoPromocao,
 									idCategoria,
 									ativoProduto,
+									idUsuario,
 									qtdMinEstoque,
 									imagem
 								FROM
 									Produto
 								WHERE
-									idProduto = $idProduto");
-			
-			$array_produto = odbc_fetch_array($query_produto);
+									idProduto = '.$idProduto);
+			$array_produto 
+				= odbc_fetch_array($query_usuario);
 		
 			include('editar_produto_tpl.php');
 			
@@ -150,12 +145,10 @@ if(isset($_REQUEST['acao'])){
 	
 }else{
 
-	
-	
-	
+	//insere novo usuario
 	
 	if(isset($_POST['btnNovoProduto'])){
-				
+		
 				//trata nome
 				$nome = preg_replace("/[^a-zA-Z0-9]+/","",$_POST['nome']);
 		
@@ -181,37 +174,32 @@ if(isset($_REQUEST['acao'])){
 				$qtdMinEstoque = preg_replace("/[^0-9]/","",$_POST['qtdMinEstoque']);
 				
 				//trataImagem
-				if($_FILES['imagem']['type'] == "image/jpeg"){
-					$imagem = $_FILES['imagem']['tmp_name'];
-				}
+				$image = $_FILES['imagejpg']['tmp_name'];
+				$imagem = fopen($image, "r");
+				$conteudo = fread($imagem, filesize($image));
+				
 				
 		
-		if(odbc_exec($db, "	INSERT INTO
-								Produto
-								(nomeProduto,
-								descProduto,
-								precProduto,
-								descontoPromocao,
-								idCategoria,
-								ativoProduto,
-								qtdMinEstoque,
-								imagem)
-							VALUES
-								('$nome',
-								'$descProduto',
-								'$precProduto',
-								'$descontoPromocao',
-								'$idCategoria',
-								'$ativo',
-								'$qtdMinEstoque',
-								'$imagem')")){
-			$msg = "Produto gravado com sucesso";					
-		}else{
-			$erro = "Erro ao gravar o Produto";
-		}
-	}
+		$sql = "INSERT INTO Produto
+					(nomeProduto,
+					descProduto,
+					precProduto,
+					descontoPromocao,
+					idCategoria,
+					ativoProduto,
+					qtdMinEstoque,
+					imagem)
+				VALUES
+					(?,?,?,?,?,?,?,?)";
+			
+			$prepare = odbc_prepare($db,$sql);
+			$parametro = array($nome,$descProduto,$precProduto,$descontoPromocao,$idCategoria,$ativo,$qtdMinEstoque,$conteudo);
+			$resposta = odbc_execute($prepare,$parametro); 
+			
 
-	$query = odbc_exec($db, 'SELECT 
+	} 
+
+	$q = odbc_exec( $db, 'SELECT 
 									idProduto,
 									nomeProduto,
 									descProduto,
@@ -225,12 +213,12 @@ if(isset($_REQUEST['acao'])){
 								FROM
 									Produto');
 			$i = 0;							
-			while($r = odbc_fetch_array($query)){
+			while($r = odbc_fetch_array($q)){
 				$produtos[$i] = $r;
 				$i++;
 			}
-			include('lista_produto_tpl.php');
+			
+			include('lista_produto_tpl.php');	
 }
-
 
 ?>

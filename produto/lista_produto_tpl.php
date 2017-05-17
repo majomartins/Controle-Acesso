@@ -4,17 +4,25 @@ include "../menu/index.head.tpl.php";
 include "../menu/index.body.tpl.php";
 
 ?>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 <body>
-	<table width="100%">
+	<div class="container">
+	<table class="table">
+	<thead>
 		<tr>
-			<td>IdProduto</td>
-			<td>NomeProduto</td>
-			<td>DescProduto</td>
-			<td>PrecProduto</td>
-			<td>DescPromocao</td>
-			<td>IdCategoria</td>
-			<td>AtivoProduto</td>
-			<td>IdUsuario</td>
+			<td>Produto</td>
+			<td>Nome</td>
+			<td>Descrição</td>
+			<td>Preço</td>
+			<td>Promoção</td>
+			<td>Categoria</td>
+			<td>Ativo</td>
+			<td>Usuario</td>
 			<td>Estoque</td>
 			<td>Imagem</td>
 			<td>
@@ -33,6 +41,7 @@ include "../menu/index.body.tpl.php";
 				?>
 			<td>
 		<tr>
+		</thead>
 		<?php
 		
 		
@@ -74,6 +83,7 @@ include "../menu/index.body.tpl.php";
 		}
 		?>
 	</table>
+	</div>
 </body>
 
 <?php

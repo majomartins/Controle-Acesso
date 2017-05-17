@@ -14,7 +14,7 @@ if(isset($msg)){
 }
 ?>
 
-<form method="post" action="../produto/"><br><br>
+<form method="post" action="../produto/index.php" enctype="multipart/form-data"> <br><br>
 	
 	Nome: 
 	<input type="text" name="nome" value="<?php echo $array_produto['nomeProduto']; ?>"><br><br>
@@ -48,7 +48,7 @@ if(isset($msg)){
 	qtdMinEstoque:
 	<input type="text" name="qtdMinEstoque" value="<?php echo $array_produto['qtdMinEstoque']; ?>"><br><br>
 	
-	Imagem:<input type="file" name="imagem">
+	Imagem:<input type="file" name="imagejpg">
 	
 	<input type="submit" value="Gravar" name="btnGravarProduto">	
 
