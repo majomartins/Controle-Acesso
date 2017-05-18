@@ -1,0 +1,71 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:400);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100);
+
+
+$nav-width-collapsed:4rem;
+$nav-width-open:10rem;
+
+
+*, *:before, *:after { 
+  -webkit-box-sizing:border-box; 
+  -moz-box-sizing:border-box; 
+  box-sizing:border-box;
+}
+
+body { 
+  margin:0;
+  padding:0;
+  background:#eee;
+  font-family:Roboto,'Helvetica Neue', Helvetica, sans-serif;
+}
+
+nav { 
+  position:fixed; 
+  height:100vh; 
+  width:$nav-width-collapsed; 
+  background:#555; 
+  overflow:hidden;
+  transition: width .3s ease;
+  &:hover, &.pinned { 
+    width:$nav-width-open;
+  }
+  #logo {
+    background:#ff6600;
+    height:$nav-width-collapsed;
+    line-height:$nav-width-collapsed;
+    padding-left:.7rem;
+  }
+  a { 
+    color:#EEE; 
+    text-decoration:none; 
+    display:table; 
+    //padding:.8rem 0;
+    width:$nav-width-open;
+    &.active {
+      .fa{
+        border-left:3px solid #f60;
+        border-right:3px solid transparent;
+      }
+    }
+    &:hover { 
+      background:#444; 
+      color:#BEE0ff;
+    }
+    & .fa { 
+      width:$nav-width-collapsed;
+      display:table-cell;
+      font-size:2rem; 
+      padding:1rem 0;
+      text-align:center;
+    }
+    &.label { 
+      display:table-cell;
+    }
+  }
+}
+
+section {
+  padding: 2rem 5rem 2rem $nav-width-collapsed+5;
+  min-height:100vh;
+  h1 { font-family:Raleway, Roboto, sans-serif; font-size:2.2rem; }
+}

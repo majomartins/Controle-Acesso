@@ -4,13 +4,21 @@ include "../menu/index.head.tpl.php";
 include "../menu/index.body.tpl.php";
 
 ?>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 <body>
-	<table width="100%">
+	<div class="container">
+	<table class="table">
+		<thead>
 		<tr>
-			<td>IdCategoria</td>
-			<td>NomeCategoria</td>
-			<td>DescCategoria</td>
-			<td colspan="2" align="center">
+			<th>IdCategoria</th>
+			<th>NomeCategoria</th>
+			<th>DescCategoria</th>
+			<th colspan="2" align="center">
 				<?php
 					if($_SESSION['tipoPerfil'] == "A"){
 				
@@ -24,8 +32,9 @@ include "../menu/index.body.tpl.php";
 						echo "Editar Categoria";
 					}
 				?>
-			<td>
+			</th>
 		<tr>
+		</thead>
 		<?php
 		
 		
@@ -51,6 +60,7 @@ include "../menu/index.body.tpl.php";
 		}
 		?>
 	</table>
+	</div>
 </body>
 
 <?php

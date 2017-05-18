@@ -15,16 +15,25 @@ if(isset($msg)){
 <head>
 <link href="stylesheet.css">
 <meta charset="iso-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-<table>
-	<tr	>
-		<td>ID Usu&aacute;rio</td>
-		<td>Login</td>
-		<td>Nome</td>
-		<td>Perfil</td>
-		<td>Ativo</td>
-		<td>
+
+<div class="container">
+
+<table class="table">
+	<thead>
+	<tr>
+		<th>ID Usu&aacute;rio</th>
+		<th>Login</th>
+		<th>Nome</th>
+		<th>Perfil</th>
+		<th>Ativo</th>
+		<th>
 			<?php
 			
 			if($_SESSION['tipoPerfil'] == "A"){
@@ -39,8 +48,9 @@ if(isset($msg)){
 				echo "Novo Usuário";
 			}
 			?>
-		</td>
+		</th>
 	</tr>
+	</thead>
 	<?php
 	if($_SESSION['tipoPerfil'] == "C"){
 		foreach($usuarios as $usuario){
@@ -78,6 +88,7 @@ if(isset($msg)){
 	
 	?>
 </table>
+</div>
 </body>
 
 <?php

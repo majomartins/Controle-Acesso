@@ -64,12 +64,9 @@ if(isset($_REQUEST['acao'])){
 		
 			if(isset($_POST['btnGravarProduto'])){
 		
-				//trata nome
-				$nome = preg_replace("/[^a-zA-Z0-9]+/","",$_POST['nome']);
-		
-				//trata descProduto
-				$descProduto = preg_replace("/[^a-zA-Z0-9]+/","",$_POST['descProduto']);
+				$nome = $_POST['nome'];
 				
+				$descProduto = $_POST['descProduto'];
 				//trata precProduto
 				$precProduto = preg_replace("/[^0-9]/","",$_POST['precProduto']);
 				
@@ -149,20 +146,20 @@ if(isset($_REQUEST['acao'])){
 	
 	if(isset($_POST['btnNovoProduto'])){
 		
-				//trata nome
-				$nome = preg_replace("/[^a-zA-Z0-9]+/","",$_POST['nome']);
+				
+				$nome = utf8_decode($_POST['nome']);
 		
 				//trata descProduto
-				$descProduto = preg_replace("/[^a-zA-Z0-9]+/","",$_POST['descProduto']);
+				$descProduto = utf8_decode($_POST['descProduto']);
 				
 				//trata precProduto
-				$precProduto = preg_replace("/[^0-9]/","",$_POST['precProduto']);
+				$precProduto = utf8_decode($_POST['precProduto']);
 				
 				//trata descontoPromocao
-				$descontoPromocao = preg_replace("/[^0-9]/","",$_POST['descontoPromocao']);
+				$descontoPromocao = utf8_decode($_POST['descontoPromocao']);
 				
 				//trata categoria
-				$idCategoria = preg_replace("/[^0-9]/","",$_POST['idCategoria']);
+				$idCategoria = utf8_decode($_POST['idCategoria']);
 				
 				//trata ativo
 				$_POST['ativo'] = 
@@ -171,7 +168,7 @@ if(isset($_REQUEST['acao'])){
 				$ativo = $ativo === true ? 1 : 0;
 				
 				//trata quantMinEstoque
-				$qtdMinEstoque = preg_replace("/[^0-9]/","",$_POST['qtdMinEstoque']);
+				$qtdMinEstoque = utf8_decode($_POST['qtdMinEstoque']);
 				
 				//trataImagem
 				$image = $_FILES['imagejpg']['tmp_name'];

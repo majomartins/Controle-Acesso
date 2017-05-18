@@ -15,23 +15,23 @@ include "../menu/index.body.tpl.php";
 	<table class="table">
 	<thead>
 		<tr>
-			<td>Produto</td>
-			<td>Nome</td>
-			<td>Descrição</td>
-			<td>Preço</td>
-			<td>Promoção</td>
-			<td>Categoria</td>
-			<td>Ativo</td>
-			<td>Usuario</td>
-			<td>Estoque</td>
-			<td>Imagem</td>
-			<td>
+			<th>Produto</th>
+			<th>Nome</th>
+			<th>Descrição</th>
+			<th>Preço</th>
+			<th>Promoção</th>
+			<th>Categoria</th>
+			<th>Ativo</th>
+			<th>Usuario</th>
+			<th>Estoque</th>
+			<th>Imagem</th>
+			<th>
 				<?php
 					if($_SESSION['tipoPerfil'] == "A"){
 				
 						echo '<a href="?acao=incluir">';
 				
-						echo"<font color='green'>
+						echo"<font colspan ='2' color='green'>
 						+ Novo Produto
 						</font>
 						</a>";
@@ -39,7 +39,7 @@ include "../menu/index.body.tpl.php";
 						echo "Novo Produto";
 					}
 				?>
-			<td>
+			<th>
 		<tr>
 		</thead>
 		<?php
@@ -48,33 +48,33 @@ include "../menu/index.body.tpl.php";
 		if($_SESSION['tipoPerfil'] == "C"){
 			foreach($produtos as $produto){
 				echo "	<tr>
-						<td>{$produto['idProduto']}</td>
-						<td>{$produto['nomeProduto']}</td>
-						<td>{$produto['descProduto']}</td>
-						<td>{$produto['precProduto']}</td>
-						<td>{$produto['descontoPromocao']}</td>
-						<td>{$produto['idCategoria']}</td>
-						<td>{$produto['ativoProduto']}</td>
-						<td>{$produto['idUsuario']}</td>
-						<td>{$produto['qtdMinEstoque']}</td>
-							imagem
-						<td>&nbsp;</td>
-						<td>&nbsp;</td>
+							<td>".utf8_encode($produto['idProduto'])."</td>
+							<td>".utf8_encode($produto['nomeProduto'])."</td>
+							<td>".utf8_encode($produto['descProduto'])."</td>
+							<td>".utf8_encode($produto['precProduto'])."</td>
+							<td>".utf8_encode($produto['descontoPromocao'])."</td>
+							<td>".utf8_encode($produto['idCategoria'])."</td>
+							<td>".utf8_encode($produto['ativoProduto'])."</td>
+							<td>".utf8_encode($produto['idUsuario'])."</td>
+							<td>".utf8_encode($produto['qtdMinEstoque'])."</td>
+							<td><img width = '100px' src='data:image/jpeg;base64,".base64_encode($produto['imagem'])."' /></td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
 						</tr>";
 			} 		
 		}else{
 			foreach($produtos as $produto){
 								
 				echo "	<tr>
-							<td>{$produto['idProduto']}</td>
-							<td>{$produto['nomeProduto']}</td>
-							<td>{$produto['descProduto']}</td>
-							<td>{$produto['precProduto']}</td>
-							<td>{$produto['descontoPromocao']}</td>
-							<td>{$produto['idCategoria']}</td>
-							<td>{$produto['ativoProduto']}</td>
-							<td>{$produto['idUsuario']}</td>
-							<td>{$produto['qtdMinEstoque']}</td>
+							<td>".utf8_encode($produto['idProduto'])."</td>
+							<td>".utf8_encode($produto['nomeProduto'])."</td>
+							<td>".utf8_encode($produto['descProduto'])."</td>
+							<td>".utf8_encode($produto['precProduto'])."</td>
+							<td>".utf8_encode($produto['descontoPromocao'])."</td>
+							<td>".utf8_encode($produto['idCategoria'])."</td>
+							<td>".utf8_encode($produto['ativoProduto'])."</td>
+							<td>".utf8_encode($produto['idUsuario'])."</td>
+							<td>".utf8_encode($produto['qtdMinEstoque'])."</td>
 							<td><img width = '100px' src='data:image/jpeg;base64,".base64_encode($produto['imagem'])."' /></td>	
 							<td><a href='?acao=editar&id={$produto['idProduto']}'>Editar</a></td>
 							<td><a href='?acao=excluir&id={$produto['idProduto']}'>Excluir</a></td>
