@@ -1,0 +1,87 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Segoe UI;
+}
+
+p {
+	margin-top: 20px;
+	margin-left:5%;
+}
+#table {
+	margin-right: 10%;
+	margin-top: 30px;
+	margin-left: 10%;
+	height: 300px;
+	width: 80%;
+	position: relative;
+	border-top: 2px solid #B3B3B3;
+	border-left: 2px solid #B3B3B3;
+	border-right: 2px solid #B3B3B3;
+	border-bottom: 10px solid #C2000B;
+	float: left;
+}
+
+#conteudo {
+	height: 300px;
+	width: 74%;
+	position:relative;
+	float: right;
+	color: #4D4D4D;
+}
+
+#campo {
+	border-right:  2px solid #B3B3B3;
+	height : 300px;
+	width: 25%;
+	position: relative;
+	float: left;
+}
+
+
+#imagem {
+	height: 200px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+
+
+#titulo {
+	margin-top: 5px;
+	margin-left:5%;
+	font-size: 30px;
+}
+
+
+
+#categoria {
+	font-size: 20px;
+	color: #B3B3B3;
+}
+
+
+.valores {
+	margin-top: 250px; 
+	position: right;
+	margin-bottom: -10px;
+	font-size: 20px;
+	margin-top: 10px;
+	color: #C2000B;
+	text-align: right;
+	margin-right: 5%;
+}
+
+#categoria{
+	color: #C2000B;
+}
+
+#estoque {
+	float: left;
+}

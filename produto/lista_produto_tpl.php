@@ -1,12 +1,19 @@
 <?php
-
-include "../menu/index.head.tpl.php";
-include "../menu/index.body.tpl.php";
-
+	include "../menu/index.head.tpl.php";
+	include "../menu/index.body.tpl.php";
 ?>
+
+<head>
+	<?php
+		if($_SESSION['tipoPerfil'] == "C"){
+			echo "<link href='cliente.css' rel='stylesheet' type='text/css'>";
+		}else{
+			echo "<link href='adm.css' rel='stylesheet' type='text/css'>";
+		}
+	?>
+</head>
 <body>
-	<center>
-	<table class="table" width="90%">
+	<table>
 				<?php
 					if($_SESSION['tipoPerfil'] == "A"){
 				
@@ -16,29 +23,41 @@ include "../menu/index.body.tpl.php";
 						+ Novo Produto
 						</font>
 						</a>";
-					}else{
-						echo "Novo Produto";
 					}
 				?>
 		<?php
 		
-		
 		if($_SESSION['tipoPerfil'] == "C"){
 			foreach($produtos as $produto){
-				echo "	<tr>
-							<td>".utf8_encode($produto['idProduto'])."</td>
-							<td>".utf8_encode($produto['nomeProduto'])."</td>
-							<td>".utf8_encode($produto['descProduto'])."</td>
-							<td>".utf8_encode($produto['precProduto'])."</td>
-							<td>".utf8_encode($produto['descontoPromocao'])."</td>
-							<td>".utf8_encode($produto['idCategoria'])."</td>
-							<td>".utf8_encode($produto['ativoProduto'])."</td>
-							<td>".utf8_encode($produto['idUsuario'])."</td>
-							<td>".utf8_encode($produto['qtdMinEstoque'])."</td>
-							<td><img width = '100px' src='data:image/jpeg;base64,".base64_encode($produto['imagem'])."' /></td>
-							<td>&nbsp;</td>
-							<td>&nbsp;</td>
-						</tr>";
+				echo "
+						<div id='table'>
+							<div id='campo'>
+								<img id='imagem' src='data:image/jpeg;base64,".base64_encode($produto['imagem'])."' />
+							</div>
+							<div id='conteudo'>
+								<p id='categoria'>
+									".utf8_encode($produto['idCategoria'])."
+								</p>
+								
+								<h1 id='titulo'>
+									".utf8_encode($produto['nomeProduto'])."
+								</h1>
+								
+								<p id='texto'>
+									".utf8_encode($produto['descProduto'])."
+								</p>
+								<p id='estoque'>
+									".utf8_encode($produto['qtdMinEstoque'])."
+								</p>
+								<p class='valores'>
+									R$ ".utf8_encode($produto['precProduto'])."
+								</p>
+								<p class='valores'>
+									- R$ ".utf8_encode($produto['descontoPromocao'])."
+								</p>
+							</div>
+						</div>";
+					
 			} 		
 		}else{
 			foreach($produtos as $produto){
