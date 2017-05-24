@@ -36,24 +36,24 @@
 							</div>
 							<div id='conteudo'>
 								<p id='categoria'>
-									".utf8_encode($produto['idCategoria'])."
+									Categoria: ".$produto['idCategoria']."
 								</p>
 								
 								<h1 id='titulo'>
-									".utf8_encode($produto['nomeProduto'])."
+									".$produto['nomeProduto']."
 								</h1>
 								
 								<p id='texto'>
-									".utf8_encode($produto['descProduto'])."
+									".$produto['descProduto']."
 								</p>
 								<p id='estoque'>
-									".utf8_encode($produto['qtdMinEstoque'])."
+									Estoque: ".$produto['qtdMinEstoque']."
 								</p>
 								<p class='valores'>
-									R$ ".utf8_encode($produto['precProduto'])."
+									R$ ".$produto['precProduto']."
 								</p>
 								<p class='valores'>
-									- R$ ".utf8_encode($produto['descontoPromocao'])."
+									- R$ ".$produto['descontoPromocao']."
 								</p>
 							</div>
 						</div>";
@@ -65,16 +65,16 @@
 				echo "  
 						
 						<tr>
-							<td width='10%'><label class='cabecalhos'>ID Produto:</label>".utf8_encode($produto['idProduto'])."</td>
-							<td rowspan='5' width='30%'>".utf8_encode($produto['descProduto'])."</td>
+							<td width='10%'><label class='cabecalhos'>ID Produto:</label>".$produto['idProduto']."</td>
+							<td rowspan='5' width='30%'>".$produto['descProduto']."</td>
 							<td rowspan ='5' width='10%'><img width='150px'src='data:image/jpeg;base64,".base64_encode($produto['imagem'])."' /></td>
-							<td width='10%'><label class='cabecalhos'>Pre√ßo:</label>".utf8_encode($produto['precProduto'])."</td>
+							<td width='10%'><label class='cabecalhos'>PreÁo:</label>".$produto['precProduto']."</td>
 							<td rowspan ='2' width='5%'><a href='?acao=editar&id={$produto['idProduto']}'>Editar</a></td>
 						</tr>
 						
 						<tr>
-							<td width='15%'>".utf8_encode($produto['nomeProduto'])."</td>
-							<td width='10%'><label class='cabecalhos'>Desconto: </label>".utf8_encode($produto['descontoPromocao'])."</td>
+							<td width='15%'>".$produto['nomeProduto']."</td>
+							<td width='10%'><label class='cabecalhos'>Desconto: </label>".$produto['descontoPromocao']."</td>
 							
 							
 						</tr>
@@ -82,14 +82,14 @@
 						<tr>
 						
 						<tr>
-							<td><label class='cabecalhos'>Ativo:</label>".utf8_encode($produto['ativoProduto'])."</td>
-							<td width='10%'><label class='cabecalhos'>Categoria:</label>".utf8_encode($produto['idCategoria'])."</td>
+							<td><label class='cabecalhos'>Ativo:</label>".$produto['ativoProduto']."</td>
+							<td width='10%'><label class='cabecalhos'>Categoria:</label>".$produto['idCategoria']."</td>
 							<td rowspan='2' width='5%'><a href='?acao=excluir&id={$produto['idProduto']}'>Excluir</a></td>
 						</tr>
 						
 						<tr>	
-							<td><label class='cabecalhos'>Usu√°rio:</label>".utf8_encode($produto['idUsuario'])."</td>
-							<td width='10%'><label class='cabecalhos'>Estoque:</label>".utf8_encode($produto['qtdMinEstoque'])."</td>
+							<td><label class='cabecalhos'>Usu·rio:</label>".$produto['idUsuario']."</td>
+							<td width='10%'><label class='cabecalhos'>Estoque:</label>".$produto['qtdMinEstoque']."</td>
 						</tr>		
 							
 							

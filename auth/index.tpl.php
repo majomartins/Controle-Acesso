@@ -1,9 +1,7 @@
-﻿<!DOCTYPE html>
-<html lang="br">
+<!DOCTYPE html>
 
   <head>
-    <meta charset="ISO-8601">
-
+    
     <title>Login</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,11 +13,14 @@
   <body class="align">
 
     <div class="grid">
+		<div id="campoImagem">
+			<img src="hippo.jpeg" id="imagem">
+		</div>
 
       <form  method="POST" class="form login">
 		
 		<div class="form__field">
-          <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Usuário</span></label>
+          <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Usu�rio</span></label>
           <input id="login__username" type="text" name="email" class="form__input" placeholder="Username" required>
         </div>
 

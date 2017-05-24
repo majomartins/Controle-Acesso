@@ -147,19 +147,19 @@ if(isset($_REQUEST['acao'])){
 	if(isset($_POST['btnNovoProduto'])){
 		
 				
-				$nome = utf8_decode($_POST['nome']);
+				$nome = $_POST['nome'];
 		
 				//trata descProduto
-				$descProduto = utf8_decode($_POST['descProduto']);
+				$descProduto = $_POST['descProduto'];
 				
 				//trata precProduto
-				$precProduto = utf8_decode($_POST['precProduto']);
+				$precProduto = $_POST['precProduto'];
 				
 				//trata descontoPromocao
-				$descontoPromocao = utf8_decode($_POST['descontoPromocao']);
+				$descontoPromocao = $_POST['descontoPromocao'];
 				
 				//trata categoria
-				$idCategoria = utf8_decode($_POST['idCategoria']);
+				$idCategoria = $_POST['idCategoria'];
 				
 				//trata ativo
 				$_POST['ativo'] = 
@@ -168,7 +168,7 @@ if(isset($_REQUEST['acao'])){
 				$ativo = $ativo === true ? 1 : 0;
 				
 				//trata quantMinEstoque
-				$qtdMinEstoque = utf8_decode($_POST['qtdMinEstoque']);
+				$qtdMinEstoque = $_POST['qtdMinEstoque'];
 				
 				//trataImagem
 				$image = $_FILES['imagejpg']['tmp_name'];

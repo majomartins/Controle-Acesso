@@ -1,21 +1,9 @@
-@use cssnext;
-
 /* config.css */
 
 :root {
   --baseColor: #ffffff;
 }
 
-/* helpers/align.css */
-
-.align {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/* helpers/grid.css */
 
 :root {
   --gridMaxWidth: 20rem;
@@ -29,7 +17,6 @@
   width: var(--gridWidth);
 }
 
-/* helpers/hidden.css */
 
 .hidden {
   border: 0;
@@ -42,7 +29,7 @@
   width: 1px;
 }
 
-/* helpers/icon.css */
+
 
 :root {
   --iconFill: var(--baseColor);
@@ -66,17 +53,13 @@
 :root {
   --htmlFontSize: 100%;
 
-  --bodyBackgroundColor: rgba(250,250,250,1); /*cor do fundo */
+  --bodyBackgroundColor: rgba(255,255,255,1); /*cor do fundo */
   --bodyColor: var(--baseColor);
   --bodyFontFamily: 'Open Sans';
   --bodyFontFamilyFallback: sans-serif;
   --bodyFontSize: 0.875rem;
   --bodyFontWeight: 400;
   --bodyLineHeight: 1.5;
-}
-
-* {
-  box-sizing: inherit;
 }
 
 html {
@@ -97,24 +80,11 @@ body {
   min-height: 100%;
 }
 
-/* modules/anchor.css */
+
 
 :root {
   --anchorColor: #823838;
 }
-
-a {
-  color: var(--anchorColor);
-  outline: 0;
-  text-decoration: none;
-}
-
-a:focus,
-a:hover {
-  text-decoration: underline;
-}
-
-/* modules/form.css */
 
 :root {
   --formFieldMargin: 0.875rem;
@@ -150,24 +120,19 @@ input[type='submit'] {
   margin: var(--formFieldMargin);
 }
 
-.form__input {
-  flex: 1;
-}
-
-/* modules/login.css */
 
 :root {
   --loginBorderRadus: 0.25rem;
   --loginColor: rgba(128,128,128,128);
 
-  --loginInputBackgroundColor: rgba(230,230,230,1);
-  --loginInputHoverBackgroundColor: rgba(240,240,240,1);
+  --loginInputBackgroundColor: rgba(240, 240, 240, 1);
+  --loginInputHoverBackgroundColor: rgba(230, 230, 230, 1);
 
-  --loginLabelBackgroundColor: #cd2626;
+  --loginLabelBackgroundColor: #d02130;
 
-  --loginSubmitBackgroundColor: #cd2626;
+  --loginSubmitBackgroundColor: #d02130;
   --loginSubmitColor: #eee;
-  --loginSubmitHoverBackgroundColor: #ff3030;
+  --loginSubmitHoverBackgroundColor: rgba(193, 18, 33, 1);
 }
 
 .login {
@@ -216,18 +181,8 @@ input[type='submit'] {
   background-color: var(--loginSubmitHoverBackgroundColor);
 }
 
-/* modules/text.css */
-
-:root {
-  --paragraphMarginBottom: 1.5rem;
-  --paragraphMarginTop: 1.5rem;
+#imagem {
+	position: relative;	
+	width: 320px;
 }
-
-p {
-  margin-bottom: var(--paragraphMarginBottom);
-  margin-top: var(--paragraphMarginTop);
-}
-
-.text--center {
-  text-align: center;
-}
+	

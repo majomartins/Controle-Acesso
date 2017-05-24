@@ -19,7 +19,7 @@ if(isset($msg)){
 	Nome: 
 	<input type="text" name="nomeCategoria" value="<?php echo $array_categoria['nomeCategoria']; ?>"><br><br>
 	
-	DescriÃ§Ã£o Categoria: 
+	Descrição Categoria: 
 	<input type="text" name="descCategoria" value="<?php echo $array_categoria['descCategoria']; ?>"><br><br>
 				
 	<input type="hidden" name="id" value="<?php echo $array_categoria['idCategoria']; ?>">
