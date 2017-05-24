@@ -1,0 +1,72 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+#container{
+	width: 100%;
+	font-family: Segoe UI;
+}
+
+#nav{
+	position: relative;
+	float: right;
+	width:80%;
+	margin-right: 5%;
+	color: grey;
+	height: 70px;
+	border-bottom: 10px solid #d02130;
+}
+
+
+
+
+
+.itemnav{
+	position: relative;
+	float: right;
+	width: 20%;
+	height: 70px;
+
+
+}
+
+.paragrafo{
+	text-align: center;
+	font-size: 20px;
+	margin-top: 22px;
+}
+
+.link{
+	text-decoration: none;
+	color:grey;
+}
+
+.link:hover{
+	
+	text-decoration: none;
+	color:#d02130;	
+}
+
+#campoImagem{
+	position: relative;
+	width: 10%;
+	float: left;
+	margin-left: 5%;
+	height:70px;
+	border-bottom: 10px solid #d02130;
+}
+
+#imagem{
+	height: 60px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+
