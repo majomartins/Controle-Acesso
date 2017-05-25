@@ -1,0 +1,88 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+#divcontainer{
+	margin-right: 5%;
+	margin-top: 15px;
+	margin-left: 5%;
+	margin-bottom: 15px;
+	height: 300px;
+	width: 90%;
+	position: relative;
+	border-top: 2px solid #B3B3B3;
+	border-left: 2px solid #B3B3B3;
+	border-right: 2px solid #B3B3B3;
+	border-bottom: 10px solid #C2000B;
+	float: left;
+	display: block;
+	font-family: Segoe UI;
+}
+
+.info {
+	margin-top: 30px;
+	width: 20%;
+	position: relative;
+	float:left;
+	height: 250px;
+	
+	}
+
+#button {
+	position: relative;
+	width: 10%;
+	float: left;
+	height: 250px;
+	margin-top: 30px;
+}
+
+#descricao {
+	width: 35%;
+	position: relative;
+	float: left;
+	height: 250px;
+	margin-top: 30px;
+}
+
+#campoImagemadm {
+	margin-top: 30px;
+	width: 15%;
+	position: relative;
+	float: left;
+	height: 250px;
+}
+
+#imagemadm {
+	width: 80%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.infoitem {
+	height: 62.5px;
+	
+}
+
+.buttonitem {
+	height: 125px;
+	position: relative;
+}
+
+.icone {	
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	max-width: 100%;
+	max-height: 100%;
+	width: 30%
+}

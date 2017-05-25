@@ -12,8 +12,9 @@
 			<div class="itemnav">
 				<p class="paragrafo">
 					<form method="get" action="../busca/index.php">
-					<input type="text" name="busca" size="20"><input type="submit"></p>
+					<input type="text" name="busca" size="20">
 					</form>
+				</p>
 			</div>
 			<div class="itemnav">
 				<p class="paragrafo"><a class="link" href="../produto/">Produto</a></p>

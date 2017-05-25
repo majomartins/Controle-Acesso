@@ -52,9 +52,9 @@ if(isset($_REQUEST['acao'])){
 			if(isset($_POST['btnGravarUsuario'])){
 		
 				//trata nome
-				$nome = preg_replace(	"/[^a-zA-Z0-9 ]+/", 
-								"", 
-								$_POST['nome']);
+				$nome = preg_replace(	"/[^a-zA-Z0-9 ]+/", "", $_POST['nome']);
+				
+				if(!empty($nome)){
 		
 				//trata email
 				$email_exploded = 
@@ -93,6 +93,9 @@ if(isset($_REQUEST['acao'])){
 				}else{
 					$erro = "Erro ao gravar o usu&aacute;rio";
 				}
+				}else{
+					$erro = "preencha todos os campos obrigatórios";
+				}
 			}
 		
 			$query_usuario
@@ -122,30 +125,33 @@ if(isset($_REQUEST['acao'])){
 	//insere novo usuario
 	if(isset($_POST['btnNovoUsuario'])){
 		//trata nome
-		$nome = preg_replace("/[^a-zA-Z0-9 ]+/", "", $_POST['nome']);
-		//trata email
-		$email_exploded = 
-		explode('@',$_POST['login']);
-		$email_comeco = preg_replace(	"/[^a-z0-9._+-]+/i", "",$email_exploded[0]);
-		$email_fim = preg_replace(	"/[^a-z0-9._+-]+/i", "",$email_exploded[1]);
-		$email = $email_comeco.'@'.$email_fim;
+				$nome = preg_replace(	"/[^a-zA-Z0-9 ]+/", "", $_POST['nome']);
+				
+				if(!empty($nome)){
 		
-		//trata senha
-		$password = str_replace('"','',$_POST['senha']);
-		$password = str_replace("'",'',$password);
-		$password = str_replace(';','',$password);
-		
-		//trata perfil
-		$perfil = 	$_POST['perfil'] != 'A' 
-					&& $_POST['perfil'] != 'C' 
-					? 'C' :	$_POST['perfil'];
-		
-		//trata ativo
-		$_POST['ativo'] = 
-		!isset($_POST['ativo']) ? 0 : $_POST['ativo'];
-		$ativo = (bool) $_POST['ativo'];
-		$ativo = $ativo === true ? 1 : 0;
-		
+				//trata email
+				$email_exploded = 
+				explode('@',$_POST['login']);
+				$email_comeco = preg_replace(	"/[^a-z0-9._+-]+/i", "",$email_exploded[0]);
+				$email_fim = preg_replace(	"/[^a-z0-9._+-]+/i", "",$email_exploded[1]);
+				$email = $email_comeco.'@'.$email_fim;
+				
+				//trata senha
+				$password = str_replace('"','',$_POST['senha']);
+				$password = str_replace("'",'',$password);
+				$password = str_replace(';','',$password);
+				
+				//trata perfil
+				$perfil = 	$_POST['perfil'] != 'A' 
+							&& $_POST['perfil'] != 'C' 
+							? 'C' :	$_POST['perfil'];
+				
+				//trata ativo
+				$_POST['ativo'] = 
+				!isset($_POST['ativo']) ? 0 : $_POST['ativo'];
+				$ativo = (bool) $_POST['ativo'];
+				$ativo = $ativo === true ? 1 : 0;
+				
 		if(odbc_exec($db, "	INSERT INTO
 								Usuario
 								(loginUsuario,
@@ -162,6 +168,9 @@ if(isset($_REQUEST['acao'])){
 			$msg = "Usu&aacute;rio gravado com sucesso";					
 		}else{
 			$erro = "Erro ao gravar o usu&aacute;rio";
+		}
+		}else{
+			$erro = "Preencha todos os campos obrigatórios";
 		}
 	}
 

@@ -23,7 +23,6 @@ if(isset($msg)){
 	?>
 </head>
 <body>
-	<table>
 				<?php
 					if($_SESSION['tipoPerfil'] == "A"){
 				
@@ -72,47 +71,44 @@ if(isset($msg)){
 		}else{
 			foreach($produtos as $produto){
 								
-				echo "  
+				echo "  <div id='divcontainer'>
+
+							<div class='info'>
+								<p class='infoitem'>Id:<br>".$produto['idProduto']."</p>
+								<p class='infoitem'>Nome:<br>".$produto['nomeProduto']."</p>
+								<p class='infoitem'>Ativo:<br>".$produto['ativoProduto']."</p>
+								<p class='infoitem'>Usuario:<br>".$produto['idProduto']."</p>
+							</div>
+
+							<div id='descricao'>
+								<p>Descriçao:<br>".$produto['descProduto']."</p>
+							</div>
+
+							<div id='campoImagemadm'>
+								<img id='imagemadm' src='data:image/jpeg;base64,".base64_encode($produto['imagem'])."' />
+							</div>
+
+							<div class='info'>
+								<p class='infoitem'>Preço:<br>".$produto['precProduto']."</p>
+								<p class='infoitem'>Desconto:<br>".$produto['descontoPromocao']."</p>
+								<p class='infoitem'>Categoria:<br>".$produto['idCategoria']."</p>
+								<p class='infoitem'>Estoque:<br>".$produto['qtdMinEstoque']."</p>
+							</div>
+
+							<div id='button'>
+								<div class='buttonitem'>
+								<img class='icone' src='editar.png' href='?acao=editar&id={$produto['idProduto']}'>
+								</div>
+								<div class='buttonitem'>
+								<img class='icone' src='exclui.png' href='?acao=excluir&id={$produto['idProduto']}'>
+								</div>
+							</div>
+						</div> 
 						
-						<tr>
-							<td width='10%'><label class='cabecalhos'>ID Produto:</label>".$produto['idProduto']."</td>
-							<td rowspan='5' width='30%'>".$produto['descProduto']."</td>
-							<td rowspan ='5' width='10%'><img width='150px'src='data:image/jpeg;base64,".base64_encode($produto['imagem'])."' /></td>
-							<td width='10%'><label class='cabecalhos'>Preço:</label>".$produto['precProduto']."</td>
-							<td rowspan ='2' width='5%'><a href='?acao=editar&id={$produto['idProduto']}'>Editar</a></td>
-						</tr>
-						
-						<tr>
-							<td width='15%'>".$produto['nomeProduto']."</td>
-							<td width='10%'><label class='cabecalhos'>Desconto: </label>".$produto['descontoPromocao']."</td>
-							
-							
-						</tr>
-						
-						<tr>
-						
-						<tr>
-							<td><label class='cabecalhos'>Ativo:</label>".$produto['ativoProduto']."</td>
-							<td width='10%'><label class='cabecalhos'>Categoria:</label>".$produto['idCategoria']."</td>
-							<td rowspan='2' width='5%'><a href='?acao=excluir&id={$produto['idProduto']}'>Excluir</a></td>
-						</tr>
-						
-						<tr>	
-							<td><label class='cabecalhos'>Usuário:</label>".$produto['idUsuario']."</td>
-							<td width='10%'><label class='cabecalhos'>Estoque:</label>".$produto['qtdMinEstoque']."</td>
-						</tr>		
-							
-							
-						</tr>
-						<tr>
-						<div height='200px'>
-						</div>
-						</tr>";		
+						";
 			}
 		}
 		?>
-	</table>
-	</center>
 </body>
 
 <?php

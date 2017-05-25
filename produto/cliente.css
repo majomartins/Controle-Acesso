@@ -21,6 +21,7 @@ p {
 	border-right: 2px solid #B3B3B3;
 	border-bottom: 10px solid #C2000B;
 	float: left;
+	display: block;
 
 }
 
@@ -38,6 +39,7 @@ p {
 	width: 25%;
 	position: relative;
 	float: left;
+	
 }
 
 
