@@ -107,15 +107,39 @@ if(isset($_REQUEST['acao'])){
 	//insere novo produto
 	
 	if(isset($_POST['btnNovoProduto'])){
-			$nome = $_POST['nome'];
-			$descProduto = preg_replace("/[^0-9]/","",$_POST['descProduto']);
+			
+			$nome = empty($_POST['nome']) ? 'joan' : $_POST['nome'];
+			
+			$descProduto = $_POST['descProduto'];
+			$descProduto = empty($descProduto) ? null : $descProduto;
+			
 			$precProduto = preg_replace("/[^0-9]/","",$_POST['precProduto']);
+			$precProduto = empty($precProduto) ? null : $precProduto;
+			
 			$descontoPromocao = preg_replace("/[^0-9]/","",$_POST['descontoPromocao']);
-			$idCategoria = $_POST['idCategoria'];
-			$_POST['ativo'] = !isset($_POST['ativo']) ? 0 : $_POST['ativo'];$ativo = (bool) $_POST['ativo'];$ativo = $ativo === true ? 1 : 0;
+			$descontoPromocao = empty($descontoPromocao) ? null : $descontoPromocao;
+			
+			$idCategoria = preg_replace("/[^0-9]/","",$_POST['idCategoria']);
+			$idCategoria = empty($idCategoria) ? null : $idCategoria;
+			
+			$_POST['ativo'] = !isset($_POST['ativo']) ? 0 : $_POST['ativo'];
+			$ativo = (bool) $_POST['ativo'];
+			$ativo = $ativo === true ? 1 : 0;
+			
 			$qtdMinEstoque = preg_replace("/[^0-9]/","",$_POST['qtdMinEstoque']);
+			$qtdMinEstoque = empty($qtdMinEstoque) ? null : $qtdMinEstoque;
+			
 			//Prepara imagem
-			$image = $_FILES['imagejpg']['tmp_name']; $imagem = fopen($image, "r"); $conteudo = fread($imagem, filesize($image));
+			if(empty($_FILES['imagejpeg'])){
+				$conteudo = null;
+			}else{
+				$image = $_FILES['imagejpg']['tmp_name']; 
+				$imagem = fopen($image, "r"); 
+				$conteudo = fread($imagem, filesize($image));
+			}
+			
+			
+			
 				
 			$sql = "INSERT INTO Produto
 					(nomeProduto,

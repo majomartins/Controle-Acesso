@@ -1,34 +1,48 @@
 <?php
-	include "../auth/controle-de-acesso.php";
+	include "../auth/controle_de_acesso.php";
 	include "../db/index.php";
 	
 	if(isset($_GET['busca'])){
 		$busca = $_GET['busca'];
-
-		$sql = "SELECT nomeProduto, descProduto from Produto
-				where nomeProduto like '%?%' 
-				and descProduto like '%?%""" ;
-
-		$prepare = odbc_prepare($db,$sql);
-		$params = array($busca,$busca);
-		$retorno = ($prepare,$params);
+		
+		$queryproduto = odbc_exec($db, "SELECT nomeProduto,descProduto FROM Produto
+										where nomeProduto like '%".$busca."%' 
+										or descProduto like '%".$busca."%'");
+	
+	
+	
+		$i = 0;							
+		while($r = odbc_fetch_array($queryproduto)){
+			$buscasp[$i] = $r;
+			$i++;
+		}
+		
+		$querycategoria = odbc_exec($db, "SELECT nomeCategoria FROM Categoria
+										  where nomeCategoria like '%".$busca."%'");
+	
+	
+	
+		$i = 0;							
+		while($r = odbc_fetch_array($querycategoria)){
+			$buscasc[$i] = $r;
+			$i++;
+		}
+		
+		$queryusuario = odbc_exec($db, "SELECT nomeUsuario FROM Usuario
+										where nomeUsuario like '%".$busca."%'");
+	
+	
+	
+		$i = 0;							
+		while($r = odbc_fetch_array($queryusuario)){
+			$buscasu[$i] = $r;
+			$i++;
+		}
 		
 	
-
-	$i = 0;
-	while($query_busca_produto = odbc_fetch_array($retorno)){
-			$buscas[$i] = $query_busca;
-			$i++;
-
-	}
-
-	include "lista_busca_tpl.php";
-
-
 	
-?>
-
-SELECT nomeCategoria from Categoria
+/*
+	SELECT nomeCategoria from Categoria
 where nomeCategoria like '%j%'
 
 SELECT nomeProduto, descProduto from Produto
@@ -36,4 +50,13 @@ where nomeProduto like '%j%'
 and descProduto like '%j%'
 
 SELECT nomeUsuario from Usuario
-where nomeUsuario like '%j%'
+where nomeUsuario like '%j%' */
+
+
+
+
+
+
+include('lista_busca_tpl.php');
+}
+?>

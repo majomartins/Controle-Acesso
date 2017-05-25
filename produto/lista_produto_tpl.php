@@ -1,6 +1,16 @@
 <?php
 	include "../menu/index.head.tpl.php";
 	include "../menu/index.body.tpl.php";
+	if(isset($erro)){
+	echo "<center><font color='red'>
+			$erro
+			</font></center>";
+}
+if(isset($msg)){
+	echo "<center><font color='green'>
+			$msg
+			</font></center>";
+}
 ?>
 
 <head>
