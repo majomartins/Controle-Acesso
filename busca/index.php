@@ -7,37 +7,18 @@
 		if(!empty($_GET['busca'])){
 			$busca = $_GET['busca'];
 		
-			$queryproduto = odbc_exec($db, "SELECT nomeProduto,descProduto FROM Produto
+			if($queryproduto = odbc_exec($db, "SELECT nomeProduto,descProduto FROM Produto
 										where nomeProduto like '%".$busca."%' 
-										or descProduto like '%".$busca."%'");
-	
+										or descProduto like '%".$busca."%'")){
+				if(odbc_num_rows($queryproduto) == 0		){
+					$msg = "Não há nenhum produto com esse nome";
+				}
+			}
 	
 	
 			$i = 0;							
 			while($r = odbc_fetch_array($queryproduto)){
 				$buscasp[$i] = $r;
-				$i++;
-			}
-			
-			$querycategoria = odbc_exec($db, "SELECT nomeCategoria FROM Categoria
-											  where nomeCategoria like '%".$busca."%'");
-		
-		
-		
-			$i = 0;							
-			while($r = odbc_fetch_array($querycategoria)){
-				$buscasc[$i] = $r;
-				$i++;
-			}
-			
-			$queryusuario = odbc_exec($db, "SELECT nomeUsuario FROM Usuario
-											where nomeUsuario like '%".$busca."%'");
-		
-		
-		
-			$i = 0;							
-			while($r = odbc_fetch_array($queryusuario)){
-				$buscasu[$i] = $r;
 				$i++;
 			}
 			

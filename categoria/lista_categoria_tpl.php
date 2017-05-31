@@ -11,6 +11,15 @@ include "../menu/index.body.tpl.php";
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+	<?php
+	if (isset($msg)){
+	echo $msg;
+	}
+
+	if(isset($erro)){
+		echo $erro;
+	}
+	?>
 	<div class="container">
 	<table class="table">
 		<thead>

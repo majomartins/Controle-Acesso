@@ -1,3 +1,6 @@
+<head>
+	<link href="inclui.css" type="text/css" rel="stylesheet">
+</head>
 <?php
 include('../menu/index.head.tpl.php');
 include('../menu/index.body.tpl.php');
@@ -13,36 +16,39 @@ if(isset($msg)){
 			</font></center>";
 }
 ?>
-	<form method="post" action="../produto/index.php" enctype="multipart/form-data"><br><br>
 	
-		Nome: 
-		<input type="text" name="nome"><br><br>
+	<form id="form" method="post" action="../produto/index.php" enctype="multipart/form-data">
+
+		<div id="total">	
+		<p class="itens">Nome:</p>
+		<input type="text" size="40" name="nome">
 		
-		Descricao Produto: 
-		<input type="text" name="descProduto"><br><br>
+		<p class="itens">Descricao Produto:</p>
+		<textarea size="40" id="textarea" rows="10" cols="50" name="descProduto"></textarea>
 		
-		Preço Produto: 
-		<input type="text" name="precProduto" ><br><br>
+		<p class="itens">Preço Produto:</p>
+		<input type="text" size="20" name="precProduto" >
 		
-		Desconto Produto: 
-		<input type="text" name="descontoPromocao" ><br><br>
+		<p class="itens">Desconto Produto:</p> 
+		<input type="text" size="20" name="descontoPromocao" >
 		
-		Categoria: 
-		<input type="text" name="idCategoria"><br><br>
+		<p class="itens">Categoria:</p> 
+		<input type="text" size="20" name="idCategoria">
 		
-		Ativo:
+		<p class="itens">Ativo:</p>
 		<input type="checkbox" name="ativo">
-					
-		<br><br>
+				
 			
-		qtdMinEstoque:
-		<input type="text" name="qtdMinEstoque"><br><br>
+		<p class="itens">qtdMinEstoque:</p>
+		<input type="text" size="20" name="qtdMinEstoque">
 		
-		Imagem:<input type="file" name="imagejpg"> <br><br>
+		<p class="itens">Imagem:</p>
+		<input type="file" name="imagejpg">
 	
 	<input type="submit" value="Gravar" name="btnNovoProduto">	
-
+	</div>
 	</form>
+	
 <?php
 include('../menu/index.footer.tpl.php');
 ?>

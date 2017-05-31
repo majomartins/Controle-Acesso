@@ -23,29 +23,6 @@
 		}
 	?>
 	</table>
-	<table>
-	<h1>Categorias</h1>
-
-	<?php	
-		foreach ($buscasc as $busca){
-			echo "<tr>
-					<td>".$busca['nomeCategoria']."</td>
-				 </tr>";
-		}
-	?>
-	</table>
-
-	<h1>Usuario</h1>
-	<table>
-	<?php
-		
-		foreach ($buscasu as $busca){
-			echo "<tr>
-					<td>".$busca['nomeUsuario']."</td>
-				 </tr>";
-		}
-	?>
-	</table>
 
 	</body>
 	

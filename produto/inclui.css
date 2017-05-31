@@ -1,0 +1,40 @@
+* {
+    padding:0;
+    margin:0;
+}
+
+.itens {
+    color: #d02130;
+    font-family: Segoe UI;
+    font-size: 15px;
+    width: 50%;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+#form {
+    padding-top: 140px;
+    width:100%;
+    padding-left: 5%;
+}
+
+input {
+    border-radius: 5px;
+    border: solid 0.5px #d8d8d8;
+}
+
+#total {
+    position: relative;   
+    width: 44%;
+    margin-right:20%;
+    margin-left:20%;
+    padding: 5%;
+    border-left: solid 10px #d02130;
+    border-top: 0.5px solid #d2d2d2;
+    border-bottom: 0.5px solid #d2d2d2;
+    border-right: 0.5px solid #d2d2d2;
+}
+
+#textarea {
+    resize: none;
+}

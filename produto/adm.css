@@ -9,15 +9,17 @@
 	margin-left: 5%;
 	margin-bottom: 15px;
 	height: 300px;
-	width: 90%;
+	width: 89%;
 	position: relative;
-	border-top: 2px solid #B3B3B3;
-	border-left: 2px solid #B3B3B3;
-	border-right: 2px solid #B3B3B3;
-	border-bottom: 10px solid #C2000B;
+	border-top: 0.5px solid #B3B3B3;
+	border-left: 10px solid #d02130;
+	border-right: 0.5px solid #B3B3B3;
+	border-bottom: 0.5px solid #B3B3B3 ;
 	float: left;
 	display: block;
 	font-family: Segoe UI;
+	font-size: 15px;
+	color: #4d4d4d;
 }
 
 .info {
@@ -38,11 +40,12 @@
 }
 
 #descricao {
-	width: 35%;
+	width: 30%;
 	position: relative;
 	float: left;
 	height: 250px;
 	margin-top: 30px;
+	margin-left: 5px;
 }
 
 #campoImagemadm {
@@ -66,7 +69,9 @@
 }
 
 .infoitem {
+	margin-left:5%;
 	height: 62.5px;
+
 	
 }
 
@@ -86,3 +91,63 @@
 	max-height: 100%;
 	width: 30%
 }
+
+
+#campoMensagem {
+	margin-top: 15px;
+	position: relative;
+	width: 45%;
+	margin-left: 5%;
+	height: 50px;
+	float: left;
+	border-radius:5px;
+}
+#mensagem {
+	position: relative;
+	width: 90%;
+	margin-left: 15%;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-size: 18px;
+	font-family: Segoe UI;
+	color: #4CAF50;
+}
+
+#novoProduto {
+	margin-top: 15px;
+	position: relative;
+	width: 45%;
+	height: 50px;
+	float: right;
+	margin-right: 5%;
+}
+
+#novolink {
+	position: relative;
+	width: 50%;
+	margin-left: 42%;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-size: 20px;
+	font-family: Segoe UI;
+}
+
+#link {
+	color: #4CAF50;
+	text-decoration: none;
+}
+
+#erro{
+	position: relative;
+	width: 90%;
+	margin-left: 15%;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-size: 18px;
+	font-family: Segoe UI;
+	color: #d02130;
+}
+
+#marcacao {
+	color:#d02130;
+}	

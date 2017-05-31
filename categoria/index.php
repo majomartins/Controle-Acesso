@@ -7,30 +7,49 @@ if(isset($_REQUEST['acao'])){
 	$acao = $_REQUEST['acao'];
 	
 	switch($acao){
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////case INCLUIR
+	
 		case 'incluir':
 			include('incluir_categoria_tpl.php');
 			break;
-		
-		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////case EXCLUIR
+				
+				
 		case 'excluir':
-			if(is_numeric($_GET['id'])){
-				if($q = odbc_exec($db, "	DELETE FROM 
-										Categoria
-									WHERE
-										idCategoria = {$_GET['id']}")){
-					if(odbc_num_rows($q) > 0){
-						$msg = "Categoria exclu&iacute;da com sucesso";
-					}else{
-						$erro = "Categoria n&atilde;o existe";
-					}
-				}else{
-					$erro = "Erro ao excluir a Categoria";
-				}
-			}else{
-				$erro = "ID inv&aacute;lido";
-			}
 			
+			$id = $_GET['id'];
+
+			$consulta = odbc_exec($db, "SELECT idCategoria from Categoria");
+			while ($result = odbc_fetch_array($consulta)){
+				if($result['idCategoria'] == $id){
+					$done = true;
+					break;
+				}else{
+					$done = false;
+					$msg = "Categoria não existe!";
+				}
+			}
+				
+			if($done == true){
+				$check = odbc_exec($db, "SELECT idCategoria FROM Produto WHERE idCategoria = {$id}");
+				if($check['idCategoria'] == $id){
+					$done = true;
+				}else{
+					$done = false;
+					$msg = "A categoria possui produtos relacionados";
+				}
+			}
+
+			if($done == true && is_numeric($id)){
+				$done = false;
+				if($consulta = odbc_exec($db, "DELETE FROM Categoria WHERE idCategoria = {$id}")){
+					if(odbc_num_rows($consulta) > 0)
+						$msg = "Categoria excluída com sucesso";
+					else
+						$msg = "Categoria não existe";
+				}else{
+					$msg = "Erro ao excluir categoria";
+			}
+			}
+	
 			$query = odbc_exec($db, 'SELECT 
 									idCategoria,
 									nomeCategoria,
@@ -48,7 +67,7 @@ if(isset($_REQUEST['acao'])){
 					
 			break;
 		
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////case EDITAR
+
 		
 		case 'editar':
 		
@@ -70,7 +89,7 @@ if(isset($_REQUEST['acao'])){
 										idCategoria = '$idCategoria'")){
 					$msg = "Categoria gravada com sucesso";					
 				}else{
-					$erro = "Erro ao gravar a Categoria";
+					$msg = "Erro ao gravar a Categoria";
 				}
 			}
 		
@@ -95,7 +114,6 @@ if(isset($_REQUEST['acao'])){
 	
 }else{
 
-	//////////////////////////////////////////////////////////////////////////////////////////insere novo produto
 	
 	if(isset($_POST['btnNovaCategoria'])){
 				

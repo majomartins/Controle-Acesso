@@ -18,24 +18,43 @@ if(isset($_REQUEST['acao'])){
 		case 'excluir':
 			if(is_numeric($_GET['id'])){
 				if($_GET['id'] >= 1 && $_GET['id'] <= 10){
-					$erro = "Este produto não pode ser excluído";
+					$erro = "<label id='erro'>Este produto não pode ser excluído</label>";
 				}else{
 					if($q = odbc_exec($db, "DELETE FROM Produto
 										WHERE idProduto = {$_GET['id']}")){
 											if(odbc_num_rows($q) > 0){
-												$msg = "Produto exclu&iacute;do com sucesso";
+												$msg = "<label id='mensagem'>Produto exclu&iacute;do com sucesso</label>";
 											}else{
-												$erro = "Produto n&atilde;o existe";
+												$erro = "<label id='erro'>Produto n&atilde;o existe</label>";
 											}
 					}else{
-						$erro = "Erro ao excluir o Poduto";
+						$erro = "<label id='erro'>Erro ao excluir o Poduto</label>";
 					}
 				}
 			}else{
-				$erro = "ID inv&aacute;lido";
+				$erro = "<label id='erro'>ID inv&aacute;lido</label>";
 			}
 			
-			include "repetidos/queryproduto.php";
+			$q = odbc_exec( $db, 'SELECT 
+									idProduto,
+									nomeProduto,
+									descProduto,
+									precProduto,
+									descontoPromocao,
+									idCategoria,
+									ativoProduto,
+									idUsuario,
+									qtdMinEstoque,
+									imagem
+								FROM
+									Produto');
+			$i = 0;							
+			while($r = odbc_fetch_array($q)){
+				$produtos[$i] = $r;
+				$i++;
+			}
+			
+			include('lista_produto_tpl.php');
 					
 			break;
 		
@@ -47,7 +66,7 @@ if(isset($_REQUEST['acao'])){
 			$idProduto = is_numeric($_REQUEST['id']) ? $_REQUEST['id'] : 'NULL';
 			
 			if($_REQUEST['id'] >= 1 && $_REQUEST['id'] <= 10){
-				$erro = "Este produto não pode ser editado";
+				$erro = "<label id='erro'>Este produto não pode ser editado</label>";
 			}else{
 			
 				if(isset($_POST['btnGravarProduto'])){
@@ -102,14 +121,14 @@ if(isset($_REQUEST['acao'])){
 						$prepare = odbc_prepare($db,$sql);
 						$parametro = array($nome,$descProduto,$precProduto,$descontoPromocao,$idCategoria,$ativo,$qtdMinEstoque,$conteudo,$idProduto);
 							if($res = odbc_execute($prepare,$parametro)){
-								$msg = "gravado";
+								$msg = "<label id='mensagem'>gravado</label>";
 							}else{
-								$erro = "erro ao gravar";
+								$erro = "<label id='erro'>erro ao gravar</label>";
 							}
 							
 								
 					}else{
-						$erro= "preencha todos os campos obrigatórios";
+						$erro= "<label id='erro'>preencha todos os campos obrigatórios</labe>";
 					}
 				}
 			
@@ -136,9 +155,28 @@ if(isset($_REQUEST['acao'])){
 				break;
 			}
 			
-				include "repetidos/queryproduto.php";
+				$q = odbc_exec( $db, 'SELECT 
+									idProduto,
+									nomeProduto,
+									descProduto,
+									precProduto,
+									descontoPromocao,
+									idCategoria,
+									ativoProduto,
+									idUsuario,
+									qtdMinEstoque,
+									imagem
+								FROM
+									Produto');
+			$i = 0;							
+			while($r = odbc_fetch_array($q)){
+				$produtos[$i] = $r;
+				$i++;
+			}
+			
+			include('lista_produto_tpl.php');
 		default:
-			$erro = "A&ccedil;&atilde;o inv&aacute;lida";
+			$erro = "<label id='erro'>A&ccedil;&atilde;o inv&aacute;lida</label>";
 	}
 	
 }else{
@@ -194,15 +232,34 @@ if(isset($_REQUEST['acao'])){
 			$parametro = array($nome,$descProduto,$precProduto,$descontoPromocao,$idCategoria,$ativo,$qtdMinEstoque,$conteudo);
 			
 			if($resposta = odbc_execute($prepare,$parametro)){
-				$msg = "Produto inserido com sucesso";
+				$msg = "<label id='mensagem'>Produto inserido com sucesso</label>";
 			}else{
-				$erro = "Erro ao inserir o produto";
+				$erro = "<label id='erro'>Erro ao inserir o produto</label>";
 			}
 			}else{
-				$erro = "Preencha todos os campos obrigatórios";
+				$erro = "<label id='erro'>Preencha todos os campos obrigatórios</label>";
 			}
 	}
-			include "repetidos/queryproduto.php";
+			$q = odbc_exec( $db, 'SELECT 
+									idProduto,
+									nomeProduto,
+									descProduto,
+									precProduto,
+									descontoPromocao,
+									idCategoria,
+									ativoProduto,
+									idUsuario,
+									qtdMinEstoque,
+									imagem
+								FROM
+									Produto');
+			$i = 0;							
+			while($r = odbc_fetch_array($q)){
+				$produtos[$i] = $r;
+				$i++;
+			}
+			
+			include('lista_produto_tpl.php');
 
 	
 }
