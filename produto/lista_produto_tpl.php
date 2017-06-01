@@ -72,7 +72,7 @@
 								<p class='infoitem'><span id='marcacao'>Id:</span><br>".$produto['idProduto']."</p>
 								<p class='infoitem'><span id='marcacao'>Nome:</span><br>".$produto['nomeProduto']."</p>
 								<p class='infoitem'><span id='marcacao'>Ativo:</span><br>".$produto['ativoProduto']."</p>
-								<p class='infoitem'><span id='marcacao'>Usuario:</span><br>".$produto['idProduto']."</p>
+								<p class='infoitem'><span id='marcacao'>Usuario:</span><br>".$produto['idUsuario']."</p>
 							</div>
 
 							<div id='descricao'>
@@ -84,7 +84,7 @@
 							</div>
 
 							<div class='info'>
-								<p class='infoitem'><span id='marcacao'>Preço:</span><br>".round($produto['precProduto'],2)."</p>
+								<p class='infoitem'><span id='marcacao'>Preço:</span><br>".number_format($produto['precProduto'],2,',','.')."</p>
 								<p class='infoitem'><span id='marcacao'>Desconto:</span><br>";
 									if($produto['descontoPromocao'] > 1){
 										echo $produto['descontoPromocao'];
