@@ -72,25 +72,26 @@ if(isset($_REQUEST['acao'])){
 		case 'editar':
 		
 			$idCategoria = is_numeric($_REQUEST['id']) ? $_REQUEST['id'] : 'NULL';
-		
-			if(isset($_POST['btnGravarCategoria'])){
-		
-				//trata nome
-				$nomeCategoria = preg_replace("/[^a-zA-Z0-9]+/","",$_POST['nomeCategoria']);
-		
-				//trata descProduto
-				$descCategoria = preg_replace("/[^a-zA-Z0-9]+/","",$_POST['descCategoria']);
+				if(isset($_POST['btnGravarCategoria'])){
 				
-				if(odbc_exec($db, "	UPDATE 
-										Categoria
-									SET
-										nomeCategoria = '$nomeCategoria',descCategoria = '$descCategoria'
-									WHERE
-										idCategoria = '$idCategoria'")){
-					$msg = "Categoria gravada com sucesso";					
-				}else{
-					$msg = "Erro ao gravar a Categoria";
-				}
+				$nomeCategoria = $_POST['nomeCategoria'];
+				$descCategoria = $_POST['descCategoria'];
+				
+				$sql = "UPDATE 
+							Categoria
+						SET
+							nomeCategoria = ?,
+							descCategoria = ?
+						WHERE
+							idCategoria = ?";
+							
+				$prepare = odbc_prepare($db,$sql);
+				$parametro = array($nomeCategoria, $descCategoria, $idCategoria);
+				if($res = odbc_execute($prepare,$parametro)){
+								$msg = "Categoria editada com sucesso";
+							}else{
+								$erro = "Erro ao editar a Categoria";
+							}
 			}
 		
 			$query_categoria = odbc_exec($db, "SELECT 
@@ -117,23 +118,22 @@ if(isset($_REQUEST['acao'])){
 	
 	if(isset($_POST['btnNovaCategoria'])){
 				
-				//trata nome
-				$nomeCategoria = preg_replace("/[^a-zA-Z0-9]+/","",$_POST['nomeCategoria']);
-		
-				//trata descProduto
-				$descCategoria = preg_replace("/[^a-zA-Z0-9]+/","",$_POST['descCategoria']);
+		$nomeCategoria = $_POST['nomeCategoria'];
+		$descCategoria = $_POST['descCategoria'];
 				
-		
-		if(odbc_exec($db, "	INSERT INTO
-								Categoria
-								(nomeCategoria,descCategoria)
-							VALUES
-								('$nomeCategoria','$descCategoria')")){
-			
-			$msg = "Categoria gravada com sucesso";					
+		$sql = "INSERT INTO Categoria
+					(nomeCategoria,descCategoria)
+				VALUES
+					(?,?)";
+						
+		$prepare = odbc_prepare($db,$sql);
+		$parametros = array($nomeCategoria,$descCategoria);
+		if($res = odbc_execute($prepare,$parametros)){
+			$msg = "Categoria inserida com sucesso";
 		}else{
-			$erro = "Erro ao gravar a Categoria";
+			$erro = "Erro ao inserir a categoria";
 		}
+		
 	}
 
 	$query = odbc_exec($db, 'SELECT 

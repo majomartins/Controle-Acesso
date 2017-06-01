@@ -1,37 +1,43 @@
+<head>
+	<link href="inclui.css" type="text/css" rel="stylesheet">
+</head>
 <?php
 include('../menu/index.head.tpl.php');
 include('../menu/index.body.tpl.php');
-
-if(isset($erro)){
-	echo "<center><font color='red'>
-			$erro
-			</font></center>";
-}
-if(isset($msg)){
-	echo "<center><font color='green'>
-			$msg
-			</font></center>";
-}
 ?>
 
-<form method="post" action="../produto/index.php" enctype="multipart/form-data"> <br><br>
+
+<form id="form" method="post" action="../produto/index.php" enctype="multipart/form-data"> <br><br>
+	<div id="total">
 	
-	Nome: 
-	<input type="text" name="nome" value="<?php echo $array_produto['nomeProduto']; ?>"><br><br>
+	<div>
+	<?php
+	if(isset($erro)){
+	echo "<p id='erro'>".$erro."</p>";
+	}
+	if(isset($msg)){
+		echo "<p id='mensagem'>".$msg."</p>";
+	}
+	?>	
+	</div>
 	
-	Descricao Produto: 
-	<input type="text" name="descProduto" value="<?php echo $array_produto['descProduto']; ?>"><br><br>
 	
-	Preço Produto: 
-	<input type="text" name="precProduto" value="<?php echo $array_produto['precProduto']; ?>"><br><br>
+	<p class="itens">Nome:</p>
+	<input class="valores"  type="text" size="40" name="nome" value="<?php echo $array_produto['nomeProduto']; ?>">
 	
-	Desconto Produto: 
-	<input type="text" name="descontoPromocao" value="<?php echo $array_produto['descontoPromocao']; ?>"><br><br>
+	<p class="itens">Descricao Produto:</p>
+	<textarea size="40" id="textarea" rows="5" cols="60" name="descProduto"><?php echo $array_produto['descProduto']; ?></textarea>
 	
-	Categoria: 
-	<input type="text" name="idCategoria" value="<?php echo $array_produto['idCategoria']; ?>"><br><br>
+	<p class="itens">Preço Produto:</p>
+	<input class="valores"  type="text" size="20" name="precProduto" value="<?php echo $array_produto['precProduto']; ?>" >
 	
-	Ativo:
+	<p class="itens">Desconto Produto:</p> 
+	<input class="valores"  type="text" size="20" name="descontoPromocao" value="<?php echo $array_produto['descontoPromocao']; ?>" >
+	
+	<p class="itens">Categoria:</p> 
+	<input class="valores" type="text" size="20" name="idCategoria" value="<?php echo $array_produto['idCategoria']; ?>">
+	
+	<p class="itens">Ativo:</p>
 				<?php
 				if($array_produto['ativoProduto'] == 1){
 					echo '<input type="checkbox" name="ativo" checked>';
@@ -44,16 +50,14 @@ if(isset($msg)){
 	<input type="hidden" name="id" value="<?php echo $array_produto['idProduto']; ?>">
 	<input type="hidden" name="acao" value="editar">
 	
-	<br><br>
-		
-	qtdMinEstoque:
-	<input type="text" name="qtdMinEstoque" value="<?php echo $array_produto['qtdMinEstoque']; ?>"><br><br>
+	<p class="itens">qtdMinEstoque:</p>
+	<input class="valores"  type="text" size="20" name="qtdMinEstoque" value="<?php echo $array_produto['qtdMinEstoque']; ?>">
 	
-	Imagem:
-	<input type="file" name="imagejpg"><br><br>
+	<p class="itens">Imagem:</p>
+	<input class="valores"  type="file" name="imagejpg"></br>
 	
-	<input type="submit" value="Gravar" name="btnGravarProduto">	
-
+	<input class="valores"  type="submit" value="Atualizar" name="btnGravarProduto">	
+	</div>
 	</form>
 
 <?php

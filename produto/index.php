@@ -18,7 +18,7 @@ if(isset($_REQUEST['acao'])){
 		case 'excluir':
 			if(is_numeric($_GET['id'])){
 				if($_GET['id'] >= 1 && $_GET['id'] <= 10){
-					$erro = "<label id='erro'>Este produto n√£o pode ser exclu√≠do</label>";
+					$erro = "<label id='erro'>Este produto n„o pode ser excluÌdo</label>";
 				}else{
 					if($q = odbc_exec($db, "DELETE FROM Produto
 										WHERE idProduto = {$_GET['id']}")){
@@ -66,17 +66,16 @@ if(isset($_REQUEST['acao'])){
 			$idProduto = is_numeric($_REQUEST['id']) ? $_REQUEST['id'] : 'NULL';
 			
 			if($_REQUEST['id'] >= 1 && $_REQUEST['id'] <= 10){
-				$erro = "<label id='erro'>Este produto n√£o pode ser editado</label>";
+				$erro = "<label id='erro'>Este produto n„o pode ser editado</label>";
 			}else{
 			
 				if(isset($_POST['btnGravarProduto'])){
 					
 					$precProduto = preg_replace("/[^0-9]/","",$_POST['precProduto']);
 					$idCategoria = preg_replace("/[^0-9]/","",$_POST['idCategoria']);
-
-					if(!empty($_POST['nome']) || !empty($_POST['idCategoria']) || !empty($_POST['precProduto'])){
+					$nome = $_POST['nome'];
 					
-						$nome = $_POST['nome'];
+					if(!empty($nome) && !empty($idCategoria) && !empty($precProduto)){
 						
 						$descProduto = $_POST['descProduto'];
 						$descProduto = empty($descProduto) ? null : $descProduto;
@@ -128,7 +127,7 @@ if(isset($_REQUEST['acao'])){
 							
 								
 					}else{
-						$erro= "<label id='erro'>preencha todos os campos obrigat√≥rios</labe>";
+						$erro= "Preencha todos os campos obrigatÛrios";
 					}
 				}
 			
@@ -188,7 +187,7 @@ if(isset($_REQUEST['acao'])){
 			$precProduto = preg_replace("/[^0-9]/","",$_POST['precProduto']);
 			$idCategoria = preg_replace("/[^0-9]/","",$_POST['idCategoria']);
 
-			if(!empty($_POST['nome']) || !empty($_POST['idCategoria']) || !empty($_POST['precProduto'])){
+			if(!empty($_POST['nome']) && !empty($_POST['idCategoria']) || !empty($_POST['precProduto'])){
 			
 			$nome = $_POST['nome'];
 			
@@ -237,7 +236,7 @@ if(isset($_REQUEST['acao'])){
 				$erro = "<label id='erro'>Erro ao inserir o produto</label>";
 			}
 			}else{
-				$erro = "<label id='erro'>Preencha todos os campos obrigat√≥rios</label>";
+				$erro = "<label id='erro'>Preencha todos os campos obrigatÛrios</label>";
 			}
 	}
 			$q = odbc_exec( $db, 'SELECT 

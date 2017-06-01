@@ -84,8 +84,16 @@
 							</div>
 
 							<div class='info'>
-								<p class='infoitem'><span id='marcacao'>Preço:</span><br>".$produto['precProduto']."</p>
-								<p class='infoitem'><span id='marcacao'>Desconto:</span><br>".$produto['descontoPromocao']."</p>
+								<p class='infoitem'><span id='marcacao'>Preço:</span><br>".round($produto['precProduto'],2)."</p>
+								<p class='infoitem'><span id='marcacao'>Desconto:</span><br>";
+									if($produto['descontoPromocao'] > 1){
+										echo $produto['descontoPromocao'];
+									}else{
+										echo "Sem desconto";
+									}
+								
+								
+							echo"</p>
 								<p class='infoitem'><span id='marcacao'>Categoria:</span><br>".$produto['idCategoria']."</p>
 								<p class='infoitem'><span id='marcacao'>Estoque:</span><br>".$produto['qtdMinEstoque']."</p>
 							</div>
@@ -98,9 +106,7 @@
 								<a href='?acao=excluir&id={$produto['idProduto']}'><img class='icone' src='exclui.png'></a>
 								</div>
 							</div>
-						</div> 
-						
-						";
+						</div>";
 			}
 		}
 		?>

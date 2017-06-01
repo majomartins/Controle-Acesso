@@ -18,9 +18,12 @@
     padding-left: 5%;
 }
 
-input {
+.valores {
     border-radius: 5px;
     border: solid 0.5px #d8d8d8;
+     font-family: Segoe UI;
+    color: grey;
+    font-size: 15px;
 }
 
 #total {
@@ -37,4 +40,26 @@ input {
 
 #textarea {
     resize: none;
+     font-family: Segoe UI;
+        color: grey;
+        font-size: 15px;
+}
+
+#mensagem {
+    color : #4ea51a;
+    margin-bottom: 15px;
+    font-family: Segoe UI;
+    font-size: 20px;
+    text-align: center;
+   
+}
+
+#erro {
+    color :red;
+    margin-bottom: 15px;
+    font-family: Segoe UI;
+    font-size: 20px;
+    text-align: center;
+   
+
 }

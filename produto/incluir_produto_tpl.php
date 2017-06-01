@@ -45,9 +45,9 @@ if(isset($msg)){
 		<p class="itens">Imagem:</p>
 		<input type="file" name="imagejpg">
 	
-	<input type="submit" value="Gravar" name="btnNovoProduto">	
-	</div>
-	</form>
+		<input type="submit" value="Novo Produto" name="btnNovoProduto">	
+		</div>
+		</form>
 	
 <?php
 include('../menu/index.footer.tpl.php');
