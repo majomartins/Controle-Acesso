@@ -94,13 +94,36 @@ if(isset($_REQUEST['acao'])){
 						
 						//Prepara imagem
 						if(empty($_FILES['imagejpg']['tmp_name'])){
-							$conteudo = null;
+
+							$sql = "UPDATE 
+									Produto
+								SET
+									nomeProduto = ?,
+									descProduto = ?,
+									precProduto = ?,
+									descontoPromocao = ?,
+									idCategoria = ?,
+									ativoProduto = ?,
+									qtdMinEstoque = ?
+								WHERE
+									idProduto = ?";
+								
+							$prepare = odbc_prepare($db,$sql);
+							$parametro = array($nome,$descProduto,$precProduto,$descontoPromocao,$idCategoria,$ativo,$qtdMinEstoque,$idProduto);
+							if($res = odbc_execute($prepare,$parametro)){
+								$msg = "<label id='mensagem'>Produto editado com sucesso</label>";
+							}else{
+								$erro = "<label id='erro'>Erro ao editar o produto</label>";
+							}
+
+
 						}else{
+							
 							$image = $_FILES['imagejpg']['tmp_name']; 
 							$imagem = fopen($image, "r"); 
 							$conteudo = fread($imagem, filesize($image));
-						}
-					
+						
+
 							
 							
 						$sql = "UPDATE 
@@ -117,13 +140,15 @@ if(isset($_REQUEST['acao'])){
 								WHERE
 									idProduto = ?";
 								
-						$prepare = odbc_prepare($db,$sql);
-						$parametro = array($nome,$descProduto,$precProduto,$descontoPromocao,$idCategoria,$ativo,$qtdMinEstoque,$conteudo,$idProduto);
+							$prepare = odbc_prepare($db,$sql);
+							$parametro = array($nome,$descProduto,$precProduto,$descontoPromocao,$idCategoria,$ativo,$qtdMinEstoque,$conteudo,$idProduto);
 							if($res = odbc_execute($prepare,$parametro)){
-								$msg = "<label id='mensagem'>gravado</label>";
+								$msg = "<label id='mensagem'>Produto editado com sucesso</label>";
 							}else{
-								$erro = "<label id='erro'>erro ao gravar</label>";
+								$erro = "<label id='erro'>Erro ao editar o produto</label>";
 							}
+
+						}
 							
 								
 					}else{

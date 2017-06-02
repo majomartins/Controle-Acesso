@@ -1,55 +1,40 @@
 <?php
 include('../menu/index.head.tpl.php');
 include('../menu/index.body.tpl.php');
-if(isset($erro)){
-	echo "<center><font color='red'>
-			$erro
-			</font></center>";
-}
-if(isset($msg)){
-	echo "<center><font color='green'>
-			$msg
-			</font></center>";
-}
+
 ?>
 <head>
-<link href="stylesheet.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link href="usuarios.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
+		<div id="subcampo">
 
-<div class="container">
-
-<table class="table">
-	<thead>
-	<tr>
-		<th>ID Usu&aacute;rio</th>
-		<th>Login</th>
-		<th>Nome</th>
-		<th>Perfil</th>
-		<th>Ativo</th>
-		<th>
+			<div id="campoleft">
 			<?php
-			
-			if($_SESSION['tipoPerfil'] == "A"){
-			
-			echo '<a href="?acao=incluir">';
-			
-			echo"<font color='green'>
-			+ Novo Usu&aacute;rio
-			</font>
-			</a>";
-			}else{
-				echo "Novo Usuário";
+			if(isset($erro)){
+				echo "<p id='erro'>".$erro."</p'>";
+			}
+
+			if(isset($msg)){
+				echo "<p id='mensagem'>".$msg."</p>";
 			}
 			?>
-		</th>
-	</tr>
-	</thead>
+		
+			</div>
+			<div id="camporight">
+				<?php
+				
+				if($_SESSION['tipoPerfil'] == "A"){
+					echo '<a id="newusuario" href="?acao=incluir">+ Novo Usu&aacute;rio</a>';
+				}else{
+					echo "Novo Usuário";
+				}
+
+				?>
+			</div>
+		
+		</div>
 	<?php
 	if($_SESSION['tipoPerfil'] == "C"){
 		foreach($usuarios as $usuario){
@@ -65,29 +50,41 @@ if(isset($msg)){
 		} 		
 	}else{
 		foreach($usuarios as $usuario){
-			echo "	<tr>
-					<td>{$usuario['idUsuario']}</td>
-					<td>{$usuario['loginUsuario']}</td>
-					<td>{$usuario['nomeUsuario']}</td>
-					<td>{$usuario['tipoPerfil']}</td>
-					<td>{$usuario['usuarioAtivo']}</td>
-					<td>
-<a href='?acao=editar&id={$usuario['idUsuario']}'>					
-					Editar</a>					
-					</td>
-					<td>
-<a href='?acao=excluir&id={$usuario['idUsuario']}'>
-						Excluir
-						</a></td>
-				</tr>";		
+			echo "	<div id='total'>
+
+					<div class='info'>
+					<label class='titulo'>Id Usuario</label>
+						<p class='infoitem'>{$usuario['idUsuario']}</p>		
+					<label class='titulo'>Id Usuario</label>
+						<p class='infoitem'>{$usuario['tipoPerfil']}</p>
+					<label class='titulo'>Id Usuario</label>
+						<p class='infoitem'>{$usuario['usuarioAtivo']}</p>
+					</div>
+
+					<div class='nome'>
+					<label class='titulo'>Id Usuario</label>
+						<p class='nomeitem'>{$usuario['loginUsuario']}</p>
+					<label class='titulo'>Id Usuario</label>
+						<p class='nomeitem'>{$usuario['nomeUsuario']}</p>
+					</div>
+					<div class='funcao'>
+						<p class='funcaoitem'>
+						<a href='?acao=editar&id={$usuario['idUsuario']}'><img class='icone' src='editar.png'></a>
+						</p>
+					</div>
+					<div class='funcao'>
+						<p class='funcaoitem' >
+							<a href='?acao=excluir&id={$usuario['idUsuario']}'><img class='icone' src='exclui.png'></a>											
+						</p>
+					</div>
+					
+					</div>";		
 		}
 	}
 		
 	
 	
 	?>
-</table>
-</div>
 </body>
 
 <?php

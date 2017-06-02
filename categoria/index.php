@@ -16,7 +16,6 @@ if(isset($_REQUEST['acao'])){
 		case 'excluir':
 			
 			$id = $_GET['id'];
-
 			$consulta = odbc_exec($db, "SELECT idCategoria from Categoria");
 			while ($result = odbc_fetch_array($consulta)){
 				if($result['idCategoria'] == $id){
@@ -37,7 +36,6 @@ if(isset($_REQUEST['acao'])){
 					$msg = "A categoria possui produtos relacionados";
 				}
 			}
-
 			if($done == true && is_numeric($id)){
 				$done = false;
 				if($consulta = odbc_exec($db, "DELETE FROM Categoria WHERE idCategoria = {$id}")){
@@ -67,47 +65,78 @@ if(isset($_REQUEST['acao'])){
 					
 			break;
 		
+		
 
 		
 		case 'editar':
 		
 			$idCategoria = is_numeric($_REQUEST['id']) ? $_REQUEST['id'] : 'NULL';
+			
+			if($_REQUEST['id'] >= 1 && $_REQUEST['id'] <= 6){
+				$erro = "<label id='erro'>Esta categoria não pode ser editada</label>";
+			}else{
+			
 				if(isset($_POST['btnGravarCategoria'])){
-				
-				$nomeCategoria = $_POST['nomeCategoria'];
-				$descCategoria = $_POST['descCategoria'];
-				
-				$sql = "UPDATE 
-							Categoria
-						SET
-							nomeCategoria = ?,
-							descCategoria = ?
-						WHERE
-							idCategoria = ?";
-							
-				$prepare = odbc_prepare($db,$sql);
-				$parametro = array($nomeCategoria, $descCategoria, $idCategoria);
-				if($res = odbc_execute($prepare,$parametro)){
-								$msg = "Categoria editada com sucesso";
+					
+					$nome = $_POST['nomeCategoria'];
+					
+					if(!empty($nome)){
+						
+						$descCategoria = $_POST['descCategoria'];
+						
+					
+						$sql = "UPDATE 
+									Categoria
+								SET
+									nomeCategoria = ?,
+									descCategoria = ?
+								WHERE
+									idCategoria = ?";
+								
+						$prepare = odbc_prepare($db,$sql);
+						$parametro = array($nome,$descCategoria,$idCategoria);
+							if($res = odbc_execute($prepare,$parametro)){
+								$msg = "<label id='mensagem'>Categoria editada com sucesso</label>";
 							}else{
-								$erro = "Erro ao editar a Categoria";
+								$erro = "<label id='erro'>Erro ao editar a categoria</label>";
 							}
+							
+								
+					}else{
+						$erro= "Preencha todos os campos obrigatórios";
+					}
+				}
+			
+			
+			
+				$query_categoria = odbc_exec($db, 'SELECT 
+												idCategoria,
+												nomeCategoria,
+												descCategoria
+											FROM
+												Categoria
+											WHERE
+												idCategoria = '.$idCategoria);
+				
+				
+				$array_categoria = odbc_fetch_array($query_categoria);
+				include('editar_categoria_tpl.php');
+				break;
 			}
-		
-			$query_categoria = odbc_exec($db, "SELECT 
-													idCategoria,
-													nomeCategoria,
-													descCategoria
-											   FROM
-													Categoria
-											   WHERE
-													idCategoria = $idCategoria");
 			
-			$array_categoria = odbc_fetch_array($query_categoria);
-		
-			include('editar_categoria_tpl.php');
+				$q = odbc_exec( $db, 'SELECT 
+										idCategoria,
+										nomeCategoria,
+										descCategoria
+									FROM
+										Categoria');
+			$i = 0;							
+			while($r = odbc_fetch_array($q)){
+				$categorias[$i] = $r;
+				$i++;
+			}
 			
-			break;
+			include('lista_categoria_tpl.php');
 		
 		default:
 			$erro = "A&ccedil;&atilde;o inv&aacute;lida";

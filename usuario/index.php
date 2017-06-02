@@ -12,6 +12,9 @@ if(isset($_REQUEST['acao'])){
 			break;
 		case 'excluir':
 			if(is_numeric($_GET['id'])){
+				if($_GET['id'] == 1 || $_GET['id'] == 80){
+					$erro = "Este usuário não pode ser excluído";
+				}else{
 				if($q = odbc_exec($db, "	DELETE FROM 
 										Usuario
 									WHERE
@@ -24,6 +27,7 @@ if(isset($_REQUEST['acao'])){
 				}else{
 					$erro = "Erro ao excluir o usu&aacute;rio";
 				}
+			}
 			}else{
 				$erro = "ID inv&aacute;lido";
 			}
@@ -48,6 +52,9 @@ if(isset($_REQUEST['acao'])){
 		case 'editar':
 		
 			$idUsuario = is_numeric($_REQUEST['id']) ? $_REQUEST['id'] : 'NULL';
+			if($idUsuario == 1){
+				$erro = "Este Usuário não pode ser Editado";
+			}else{
 		
 			if(isset($_POST['btnGravarUsuario'])){
 		
@@ -96,10 +103,10 @@ if(isset($_REQUEST['acao'])){
 				}else{
 					$erro = "preencha todos os campos obrigatórios";
 				}
+
 			}
 		
-			$query_usuario
-				= odbc_exec($db, 'SELECT 
+			$query_usuario = odbc_exec($db, 'SELECT 
 									idUsuario,
 									loginUsuario,
 									nomeUsuario,
@@ -109,13 +116,28 @@ if(isset($_REQUEST['acao'])){
 									Usuario
 								WHERE
 									idUsuario = '.$idUsuario);
-			$array_usuario 
-				= odbc_fetch_array($query_usuario);
+			$array_usuario = odbc_fetch_array($query_usuario);
 		
 			include('editar_usuario_tpl.php');
 			
 			break;
 		
+			}
+			$q = odbc_exec($db, 'SELECT 
+							idUsuario,
+							loginUsuario,
+							nomeUsuario,
+							tipoPerfil,
+							usuarioAtivo
+						FROM
+							Usuario');
+			$i = 0;							
+			while($r = odbc_fetch_array($q)){
+			$usuarios[$i] = $r;
+			$i++;
+	}
+	include('lista_usuario_tpl.php');
+
 		default:
 			$erro = "A&ccedil;&atilde;o inv&aacute;lida";
 	}

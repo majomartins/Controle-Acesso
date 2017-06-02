@@ -5,48 +5,37 @@ include "../menu/index.body.tpl.php";
 
 ?>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link href="adm.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<?php
-	if (isset($msg)){
-	echo $msg;
-	}
+		<div id="subcampo">
 
-	if(isset($erro)){
-		echo $erro;
-	}
-	?>
-	<div class="container">
-	<table class="table">
-		<thead>
-		<tr>
-			<th>IdCategoria</th>
-			<th>NomeCategoria</th>
-			<th>DescCategoria</th>
-			<th colspan="2" align="center">
+			<div id="campoleft">
+			<?php
+			if(isset($erro)){
+				echo "<p id='erro'>".$erro."</p'>";
+			}
+
+			if(isset($msg)){
+				echo "<p id='mensagem'>".$msg."</p>";
+			}
+			?>
+		
+			</div>
+			<div id="camporight">
 				<?php
-					if($_SESSION['tipoPerfil'] == "A"){
 				
-						echo '<a href="?acao=incluir">';
-				
-						echo"<font color='green'>
-						+ Nova Categoria
-						</font>
-						</a>";
-					}else{
-						echo "Editar Categoria";
-					}
+				if($_SESSION['tipoPerfil'] == "A"){
+					echo '<a id="newcategoria" href="?acao=incluir">+ Nova Categoria</a>';
+				}else{
+					echo "Novo Usuário";
+				}
+
 				?>
-			</th>
-		<tr>
-		</thead>
+			</div>
+		
+		</div>
 		<?php
-		
-		
 		if($_SESSION['tipoPerfil'] == "C"){
 			foreach($categorias as $categoria){
 				echo "	<tr>
@@ -58,18 +47,31 @@ include "../menu/index.body.tpl.php";
 			
 			foreach($categorias as $categoria){
 								
-				echo "	<tr>
-							<td>{$categoria['idCategoria']}</td>
-							<td>{$categoria['nomeCategoria']}</td>
-							<td>{$categoria['descCategoria']}</td>
-							<td><a href='?acao=editar&id={$categoria['idCategoria']}'>Editar</a></td>
-							<td><a href='?acao=excluir&id={$categoria['idCategoria']}'>Excluir</a></td>
-						</tr>";		
+				echo "	<div id='total'>
+							<div id='campoid'>
+								<p id='itemidt'>ID Categoria</p>
+								<p id='itemid'>{$categoria['idCategoria']}</p>
+							</div>
+
+							<div id='campoinfo'>
+								<p class='itens'>Nome Categoria</p>
+								<p class='itensinfo'>{$categoria['nomeCategoria']}</p>
+								<p class='itens'>Descrição Categoria</p>
+								<p class='itensinfo'>.".$categoria['descCategoria']."</p>
+							</div>
+
+							<div id='iconeeditar'>
+								<a href='?acao=editar&id={$categoria['idCategoria']}'><img class='imagem' src='editar.png'></img></a></td>
+							</div>
+								
+							<div id='iconeexcluir'>
+								<a href='?acao=excluir&id={$categoria['idCategoria']}'><img class='imagem' src='exclui.png'></img></a></td>
+							</div>
+							</div>
+						</div>";		
 			}
 		}
 		?>
-	</table>
-	</div>
 </body>
 
 <?php
