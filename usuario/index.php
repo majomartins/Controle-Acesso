@@ -13,7 +13,7 @@ if(isset($_REQUEST['acao'])){
 		case 'excluir':
 			if(is_numeric($_GET['id'])){
 				if($_GET['id'] == 1 || $_GET['id'] == 80){
-					$erro = "Este usuÃ¡rio nÃ£o pode ser excluÃ­do";
+					$erro = "Este usuário não pode ser excluído";
 				}else{
 				if($q = odbc_exec($db, "	DELETE FROM 
 										Usuario
@@ -53,7 +53,7 @@ if(isset($_REQUEST['acao'])){
 		
 			$idUsuario = is_numeric($_REQUEST['id']) ? $_REQUEST['id'] : 'NULL';
 			if($idUsuario == 1){
-				$erro = "Este UsuÃ¡rio nÃ£o pode ser Editado";
+				$erro = "Este Usuário não pode ser Editado";
 			}else{
 		
 			if(isset($_POST['btnGravarUsuario'])){
@@ -101,7 +101,7 @@ if(isset($_REQUEST['acao'])){
 					$erro = "Erro ao gravar o usu&aacute;rio";
 				}
 				}else{
-					$erro = "preencha todos os campos obrigatÃ³rios";
+					$erro = "preencha todos os campos obrigatórios";
 				}
 
 			}
@@ -192,7 +192,7 @@ if(isset($_REQUEST['acao'])){
 			$erro = "Erro ao gravar o usu&aacute;rio";
 		}
 		}else{
-			$erro = "Preencha todos os campos obrigatÃ³rios";
+			$erro = "Preencha todos os campos obrigatórios";
 		}
 	}
 

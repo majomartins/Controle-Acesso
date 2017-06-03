@@ -15,56 +15,61 @@ if(isset($_REQUEST['acao'])){
 				
 		case 'excluir':
 			
-			$id = $_GET['id'];
-			$consulta = odbc_exec($db, "SELECT idCategoria from Categoria");
-			while ($result = odbc_fetch_array($consulta)){
-				if($result['idCategoria'] == $id){
-					$done = true;
-					break;
+			if(is_numeric($_GET['id'])){
+				if($_GET['id'] >= 1 && $_GET['id'] <= 6){
+					$erro = "Esta categoria n„o pode ser excluÌda";
 				}else{
-					$done = false;
-					$msg = "Categoria n√£o existe!";
+
+				$sqlcategoria = "Select idCategoria from Produto";
+				$queryidcategoria = odbc_exec($db,$sqlcategoria);
+
+				while($linha = odbc_fetch_array($queryidcategoria)){
+					
+					if($_GET['id'] == $linha['idCategoria']){
+						$contem = 0;
+						$erro = "Esta categoria n„o pode ser excluÌda, devido ela conter produtos";
+						break;
+					}
 				}
-			}
 				
-			if($done == true){
-				$check = odbc_exec($db, "SELECT idCategoria FROM Produto WHERE idCategoria = {$id}");
-				if($check['idCategoria'] == $id){
-					$done = true;
+				if(empty($contem)){
+
+				if($q = odbc_exec($db, "DELETE FROM 
+											Categoria
+										WHERE
+										idCategoria = {$_GET['id']}")){
+										if(odbc_num_rows($q) > 0){
+										$msg = "Categoria excluÌda com sucesso";
+					}else{
+						$erro = "Categoria n„o existe";
+					}
 				}else{
-					$done = false;
-					$msg = "A categoria possui produtos relacionados";
+					$erro = "Erro ao excluir a categoria";
 				}
 			}
-			if($done == true && is_numeric($id)){
-				$done = false;
-				if($consulta = odbc_exec($db, "DELETE FROM Categoria WHERE idCategoria = {$id}")){
-					if(odbc_num_rows($consulta) > 0)
-						$msg = "Categoria exclu√≠da com sucesso";
-					else
-						$msg = "Categoria n√£o existe";
-				}else{
-					$msg = "Erro ao excluir categoria";
+				}
+			}else{
+				$erro = "ID inv&aacute;lido";
 			}
-			}
-	
-			$query = odbc_exec($db, 'SELECT 
+			
+
+			$q = odbc_exec($db, 'SELECT 
 									idCategoria,
 									nomeCategoria,
 									descCategoria
 								FROM
 									Categoria');
-			
 			$i = 0;							
-			while($r = odbc_fetch_array($query)){
+			while($r = odbc_fetch_array($q)){
 				$categorias[$i] = $r;
 				$i++;
 			}
-			
 			include('lista_categoria_tpl.php');	
-					
+			
+
 			break;
 		
+			
 		
 
 		
@@ -73,7 +78,7 @@ if(isset($_REQUEST['acao'])){
 			$idCategoria = is_numeric($_REQUEST['id']) ? $_REQUEST['id'] : 'NULL';
 			
 			if($_REQUEST['id'] >= 1 && $_REQUEST['id'] <= 6){
-				$erro = "<label id='erro'>Esta categoria n√£o pode ser editada</label>";
+				$erro = "Esta categoria n„o pode ser editada";
 			}else{
 			
 				if(isset($_POST['btnGravarCategoria'])){
@@ -103,7 +108,7 @@ if(isset($_REQUEST['acao'])){
 							
 								
 					}else{
-						$erro= "Preencha todos os campos obrigat√≥rios";
+						$erro= "Preencha todos os campos obrigatÛrios";
 					}
 				}
 			

@@ -29,10 +29,10 @@ include('../menu/index.body.tpl.php');
 		<textarea size="40" id="textarea" rows="5" cols="60" name="descProduto"><?php echo $array_produto['descProduto']; ?></textarea>
 		
 		<p class="itens">Preço Produto:</p>
-		<input class="valores"  type="text" size="20" name="precProduto" value="<?php echo $array_produto['precProduto']; ?>" >
+		<input class="valores"  type="text" size="20" name="precProduto" value="<?php echo number_format($array_produto['precProduto'],2,',','.'); ?>" >
 		
 		<p class="itens">Desconto Produto:</p> 
-		<input class="valores"  type="text" size="20" name="descontoPromocao" value="<?php echo $array_produto['descontoPromocao']; ?>" >
+		<input class="valores"  type="text" size="20" name="descontoPromocao" value="<?php echo number_format($array_produto['descontoPromocao'],2,',','.'); ?>" >
 		
 		<p class="itens">Categoria:</p> 
 		<input class="valores" type="text" size="20" name="idCategoria" value="<?php echo $array_produto['idCategoria']; ?>">

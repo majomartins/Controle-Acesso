@@ -36,19 +36,6 @@ include('../menu/index.body.tpl.php');
 		
 		</div>
 	<?php
-	if($_SESSION['tipoPerfil'] == "C"){
-		foreach($usuarios as $usuario){
-			echo "	<tr>
-					<td>{$usuario['idUsuario']}</td>
-					<td>{$usuario['loginUsuario']}</td>
-					<td>{$usuario['nomeUsuario']}</td>
-					<td>{$usuario['tipoPerfil']}</td>
-					<td>{$usuario['usuarioAtivo']}</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					</tr>";
-		} 		
-	}else{
 		foreach($usuarios as $usuario){
 			echo "	<div id='total'>
 
@@ -80,10 +67,6 @@ include('../menu/index.body.tpl.php');
 					
 					</div>";		
 		}
-	}
-		
-	
-	
 	?>
 </body>
 

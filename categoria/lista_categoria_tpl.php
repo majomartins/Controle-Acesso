@@ -22,29 +22,22 @@ include "../menu/index.body.tpl.php";
 			?>
 		
 			</div>
+			
 			<div id="camporight">
-				<?php
+			<?php
 				
-				if($_SESSION['tipoPerfil'] == "A"){
-					echo '<a id="newcategoria" href="?acao=incluir">+ Nova Categoria</a>';
-				}else{
-					echo "Novo Usu√°rio";
-				}
+			if($_SESSION['tipoPerfil'] == "A"){
+				echo '<a id="newcategoria" href="?acao=incluir">+ Nova Categoria</a>';
+			}else{
+				echo "Novo Usu·rio";
+			}
 
-				?>
+			?>
 			</div>
 		
 		</div>
 		<?php
-		if($_SESSION['tipoPerfil'] == "C"){
-			foreach($categorias as $categoria){
-				echo "	<tr>
-						<td>{$categoria['idCategoria']}</td>
-						<td>{$categoria['nomeCategoria']}</td>
-						<td>{$categoria['descCategoria']}</td>";
-			} 		
-		}else{
-			
+		
 			foreach($categorias as $categoria){
 								
 				echo "	<div id='total'>
@@ -56,7 +49,7 @@ include "../menu/index.body.tpl.php";
 							<div id='campoinfo'>
 								<p class='itens'>Nome Categoria</p>
 								<p class='itensinfo'>{$categoria['nomeCategoria']}</p>
-								<p class='itens'>Descri√ß√£o Categoria</p>
+								<p class='itens'>DescriÁ„o Categoria</p>
 								<p class='itensinfo'>.".$categoria['descCategoria']."</p>
 							</div>
 
@@ -70,7 +63,6 @@ include "../menu/index.body.tpl.php";
 							</div>
 						</div>";		
 			}
-		}
 		?>
 </body>
 

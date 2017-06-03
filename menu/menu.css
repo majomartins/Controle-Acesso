@@ -69,4 +69,58 @@
 	max-height: 100%;
 }
 
+#form {
+	margin-top: 28px;
+}
+#footer {
+	border-top: 10px #d02130 solid;
+	padding-top:10px;
+	width: 90%;
+	margin-right: 5%;
+	margin-left: 5%;
+	height: 10%;
+	bottom:0px;
+	position: absolute;
+	font-family: Segoe UI;
+	color: grey;
+	font-size:13px;
+	background-color: #ffffff;
+	margin-top: 15px;
+}
 
+#nomes {
+
+	position: absolute;
+	width: 30%;
+	left:0;
+}
+
+#inforoda{
+	position: absolute;
+	width: 30%;
+	margin-left:35%;
+	left:0;
+	
+}
+#linkfooter{
+	position: absolute;
+	width: 30%;
+	right:0;
+}
+
+.left{
+	text-align: center;
+}
+
+.linkfooter {
+	color: grey;
+	text-decoration: none;
+}
+
+.linkfooter:hover {
+	color: #a00b18;
+}
+
+.right {
+	text-align: center;
+}

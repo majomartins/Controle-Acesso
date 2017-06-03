@@ -11,7 +11,7 @@
 			</div>
 			<div class="itemnav">
 				<p class="paragrafo">
-					<form method="get" action="../busca/index.php">
+					<form id="formenu" method="get" action="../busca/index.php">
 					<input type="text" name="busca" size="20">
 					</form>
 				</p>

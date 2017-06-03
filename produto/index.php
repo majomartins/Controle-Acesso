@@ -79,11 +79,13 @@ if(isset($_REQUEST['acao'])){
 						
 						$descProduto = $_POST['descProduto'];
 						$descProduto = empty($descProduto) ? null : $descProduto;
-						
-						
+
 						$descontoPromocao = preg_replace("/[^0-9]/","",$_POST['descontoPromocao']);
 						$descontoPromocao = empty($descontoPromocao) ? null : $descontoPromocao;
-						
+
+						if(strlen($precProduto) > 14 || strlen($descontoPromocao) > 14){
+							$erro = "Valores muito altos";
+						}else{
 						
 						$_POST['ativo'] = !isset($_POST['ativo']) ? 0 : $_POST['ativo'];
 						$ativo = (bool) $_POST['ativo'];
@@ -115,7 +117,7 @@ if(isset($_REQUEST['acao'])){
 							}else{
 								$erro = "<label id='erro'>Erro ao editar o produto</label>";
 							}
-
+						
 
 						}else{
 							
@@ -149,7 +151,7 @@ if(isset($_REQUEST['acao'])){
 							}
 
 						}
-							
+						}
 								
 					}else{
 						$erro= "Preencha todos os campos obrigatórios";
@@ -211,10 +213,9 @@ if(isset($_REQUEST['acao'])){
 		
 			$precProduto = preg_replace("/[^0-9]/","",$_POST['precProduto']);
 			$idCategoria = preg_replace("/[^0-9]/","",$_POST['idCategoria']);
-
-			if(!empty($_POST['nome']) && !empty($_POST['idCategoria']) || !empty($_POST['precProduto'])){
-			
 			$nome = $_POST['nome'];
+
+			if(!empty($_POST['nome']) && !empty($idCategoria) && !empty($precProduto)){
 			
 			$descProduto = $_POST['descProduto'];
 			$descProduto = empty($descProduto) ? null : $descProduto;

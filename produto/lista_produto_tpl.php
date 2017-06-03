@@ -1,20 +1,14 @@
 <?php
+	ini_set ('odbc.defaultlrl', 9000000);
 	include "../menu/index.head.tpl.php";
 	include "../menu/index.body.tpl.php";
-	
-
 
 ?>
 
 <head>
-	<?php
-		if($_SESSION['tipoPerfil'] == "C"){
-			echo "<link href='cliente.css' rel='stylesheet' type='text/css'>";
-		}else{
-			echo "<link href='adm.css' rel='stylesheet' type='text/css'>";
-		}
-	?>
+	<link href='adm.css' rel='stylesheet' type='text/css'>
 </head>
+
 <body>
 		<div id='novoProduto'>
 			<p id="novolink"><a id="link" href='?acao=incluir'>+Novo Produto</a></p>
@@ -32,39 +26,6 @@
 		</div>
 		<?php
 		
-		if($_SESSION['tipoPerfil'] == "C"){
-			foreach($produtos as $produto){
-				echo "
-						<div id='table'>
-							<div id='campo'>
-								<img id='imagem' src='data:image/jpeg;base64,".base64_encode($produto['imagem'])."' />
-							</div>
-							<div id='conteudo'>
-								<p id='categoria'>
-									Categoria: ".$produto['idCategoria']."
-								</p>
-								
-								<h1 id='titulo'>
-									".$produto['nomeProduto']."
-								</h1>
-								
-								<p id='texto'>
-									".$produto['descProduto']."
-								</p>
-								<p id='estoque'>
-									Estoque: ".$produto['qtdMinEstoque']."
-								</p>
-								<p class='valores'>
-									R$ ".$produto['precProduto']."
-								</p>
-								<p class='valores'>
-									- R$ ".$produto['descontoPromocao']."
-								</p>
-							</div>
-						</div>";
-					
-			} 		
-		}else{
 			foreach($produtos as $produto){
 								
 				echo "  <div id='divcontainer'>
@@ -108,7 +69,6 @@
 							</div>
 						</div>";
 			}
-		}
 		?>
 </body>
 
